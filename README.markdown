@@ -1,4 +1,4 @@
-Bundlizer
+Bundlizer [![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
 ================================================================================
 
 

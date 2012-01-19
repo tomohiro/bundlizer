@@ -2,7 +2,7 @@ Bundlizer
 ================================================================================
 
 
-Installation an setup
+Installation and setup
 --------------------------------------------------------------------------------
 
 1. Clone `bundlizer` and copy to the `$HOME/bin` or `/usr/local/bin`

@@ -92,21 +92,14 @@ EOF
     initialize
 
     for gem_path in `ls -d $BUNDLES/*`; do
-        gem_bin_path=$gem_path/bin
-        echo $gem_path
-
         bundle_install_at $gem_path
-        exit
 
+        gem_bin_path=$gem_path/bin
         for bin in `get_gem_bin_files $gem_bin_path`; do
             _message "Install \`$bin\` to $BUNDLES/bin"
             create_bundle_exec_wapper $gem_path $bin > $BUNDLES/bin/$bin
             chmod +x $BUNDLES/bin/$bin
         done
     done
-
-    if [ $SHELL = 'zsh' ]; then
-        rehash
-    fi
 
     exit 0

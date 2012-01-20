@@ -2,71 +2,68 @@ Bundlizer [![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png
 ================================================================================
 
 
-Installation and setup
+Requirements
 --------------------------------------------------------------------------------
 
-1. Clone `bundlizer` and copy to the `$HOME/bin` or `/usr/local/bin`
+- OSX or Ubuntu
+- Git
+- Ruby 1.9+
+- RubyGems
+- Bundler
 
-        $ git clone git://github.com/Tomohiro/bundlizer.git
-        $ cd bundlizer
-        $ cp bundlizer ~/bin
 
 
-2. Configuration
+Installation
+--------------------------------------------------------------------------------
 
-        $ vi .bashrc
-        export PATH=$HOME/.bundles/bin:$PATH
-        $ source .bashrc
+### Install
+
+1. Clone the Bundlizer into `~/.bundlizer`
+
+        $ cd
+        $ git clone git://github.com/Tomohiro/bundlizer.git .bundlizer
+
+2. Add `~/.bundlizer/bin` to your `$PATH` at the `~/.bash_profile`
+
+        $ echo 'export PATH="$HOME/.bundlizer/bundles/bin:$HOME/.bundlizer/bin:$PATH"' >> ~/.bash_profile
+
+3. Restart your shell
+
 
 
 Usage
 --------------------------------------------------------------------------------
 
-1. Create `$HOME/.bundles/bin` directory
+### Upgrade the Bundlizer
 
-        $ mkdir -p ~/.bundles/bin
+    $ cd .bundlizer
+    $ git pull origin master
 
-2. Clone a RubyGems repository from the GitHub
 
-        $ cd ~/.bundles/
-        $ git clone git://github.com/heroku/heroku ~/.bundles/heroku
-        Cloning into '.bundles/heroku'...
-        remote: Counting objects: 9554, done.
-        remote: Compressing objects: 100% (3195/3195), done.
-        remote: Total 9554 (delta 6404), reused 9149 (delta 6060)
-        Receiving objects: 100% (9554/9554), 1.18 MiB | 201 KiB/s, done.
-        Resolving deltas: 100% (6404/6404), done.
+### Deploy Bundler project
 
-3. Execute `bundlizer`
+1. Clone the bundler project
+
+        $ cd .bundlizer/bundles
+        $ git clone git://github.com/heroku/heroku.git
+        $ git clone git://github.com/defunkt/github-gem.git
+
+2. Run `bundlizer`
 
         $ bundlizer
-        Fetching gem metadata from http://rubygems.org/.........
-        Installing rake (0.9.2) 
-        ..snip..
-        Using heroku (2.18.1) from source at . 
-        ..snip..
-        Using bundler (1.1.rc.7) 
-        Your bundle is complete! It was installed into ./vendor/bundle
-        Install `heroku` to /Users/tomohiro/.bundles/bin
 
-        $ which heroku
-        /Users/tomohiro/.bundles/bin/heroku
+3. You don't need bundler command. You can use `foo` instead of `bundle exec foo`
+
+        $ type heroku
+        heroku is /home/tomohiro/.bundlizer/bundles/bin/heroku
         $ heroku version
         heroku-gem/2.18.1
 
+        $ type github
+        github is /home/tomohiro/.bundlizer/bundles/bin/github
+        $ github version
+        git version 1.7.4.1
 
-Example
---------------------------------------------------------------------------------
-
-### Using `hub`
-
-    $ cd ~/.bundles
-    $ hub clone cloudfoundry/vmc
-    $ bundlizer
-    $ which vmc
-    /Users/tomohiro/.bundles/bin/vmc
-    $ vmc verion
-    vmc 0.3.16.beta.2
 
 
 ---

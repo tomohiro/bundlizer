@@ -23,9 +23,9 @@ Installation
         $ cd
         $ git clone git://github.com/Tomohiro/bundlizer.git .bundlizer
 
-2. Add `~/.bundlizer/bin` to your `$PATH` at the `~/.bash_profile`
+2. Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
 
-        $ echo 'export PATH="$HOME/.bundlizer/bundles/bin:$HOME/.bundlizer/bin:$PATH"' >> ~/.bash_profile
+        $ echo 'source $HOME/.bundlizer/etc/bashrc' >> ~/.bash_profile
 
 3. Restart your shell
 

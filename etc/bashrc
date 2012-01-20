@@ -1,0 +1,2 @@
+abs_path=$(cd $(dirname $0)/.. && pwd)
+export PATH=$abs_path/bin:$abs_path/bundles/bin:$PATH

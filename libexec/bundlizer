@@ -1,0 +1,100 @@
+#!/bin/bash
+
+set -e
+
+# Constant
+
+    PREFIX=$HOME/.bundlizer
+    BUNDLES=$PREFIX/bundles
+
+# Check requirements
+
+    initialize()
+    {
+        if ! type gem > /dev/null; then
+            _warn 'RubyGems not found'
+        fi
+
+        if ! type bundle > /dev/null; then
+            _warn 'Bundler not found'
+        fi
+
+        if [ ! -d $HOME/.bundlizer/bundles ]; then
+            mkdir -p $HOME/.bundlizer/bundles/bin
+        fi
+    }
+
+
+# Return RubyGems executable file list
+
+    get_gem_bin_files()
+    {
+        local bindir=$1
+        if [ -d $bindir ]; then
+            bin=`ls $1`
+            echo $bin
+        fi
+    }
+
+
+# Bundle install under the vendor directory
+
+    bundle_install_at()
+    {
+        local gem_path=$1
+        cd $gem_path
+        if [ -f Gemfile ]; then
+            bundle install --path vendor/bundle
+        fi
+    }
+
+
+# Create a `bundle exec` wrapper script
+
+    create_bundle_exec_wapper()
+    {
+        local gem_path=$1
+        local bin=$2
+        cat << EOF
+#!/bin/sh
+
+cd $gem_path
+bundle exec $bin \$*
+EOF
+    }
+
+
+# Display message
+
+    _message()
+    {
+        echo $1
+        echo
+    }
+
+# Warning
+
+    _warn()
+    {
+        _message $1
+        exit 1
+    }
+
+
+# Start bundle installing
+
+    initialize
+
+    for gem_path in `ls -d $BUNDLES/*`; do
+        bundle_install_at $gem_path
+
+        gem_bin_path=$gem_path/bin
+        for bin in `get_gem_bin_files $gem_bin_path`; do
+            bin_path=$BUNDLES/bin/$bin
+            _message "Install \`$bin\` to $bin_path"
+            create_bundle_exec_wapper $gem_path $bin > $bin_path
+            chmod +x $bin_path
+        done
+    done
+
+    exit 0

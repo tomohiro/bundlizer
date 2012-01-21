@@ -42,7 +42,7 @@ Usage
 
 ### Deploy Bundler project
 
-1. Clone the bundler project
+1. Clone a repository
 
         $ cd .bundlizer/bundles
         $ git clone git://github.com/heroku/heroku.git

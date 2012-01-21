@@ -2,99 +2,92 @@
 
 set -e
 
-# Constant
+# Define constants
 
-    PREFIX=$HOME/.bundlizer
-    BUNDLES=$PREFIX/bundles
+  readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
+  readonly BUNDLES=$PREFIX/bundles
 
 # Check requirements
 
-    initialize()
-    {
-        if ! type gem > /dev/null; then
-            _warn 'RubyGems not found'
-        fi
+  function initialize {
+    if ! type gem &> /dev/null; then
+      _warn 'RubyGems not found'
+    fi
 
-        if ! type bundle > /dev/null; then
-            _warn 'Bundler not found'
-        fi
+    if ! type bundle &> /dev/null; then
+      _warn 'Bundler not found'
+    fi
 
-        if [ ! -d $HOME/.bundlizer/bundles ]; then
-            mkdir -p $HOME/.bundlizer/bundles/bin
-        fi
-    }
+    if [ ! -d $BUNDLES ]; then
+      mkdir -p $BUNDLES/bin
+    fi
+
+    return 0
+  }
 
 
 # Return RubyGems executable file list
 
-    get_gem_bin_files()
-    {
-        local bindir=$1
-        if [ -d $bindir ]; then
-            bin=`ls $1`
-            echo $bin
-        fi
-    }
+  function get_gem_bin_files {
+    local bindir=$1
+    [ -d $bindir ] && ls $bindir
+  }
 
 
 # Bundle install under the vendor directory
 
-    bundle_install_at()
-    {
-        local gem_path=$1
-        cd $gem_path
-        if [ -f Gemfile ]; then
-            bundle install --path vendor/bundle
-        fi
-    }
+  function bundle_install_at {
+    local gem_path=$1
+    if [ -f $gem_path/Gemfile ]; then
+      cd $gem_path
+      echo
+      echo "Start bundle installing to $gem_path"
+      bundle install --path vendor/bundle
+    fi
+  }
 
 
 # Create a `bundle exec` wrapper script
 
-    create_bundle_exec_wapper()
-    {
-        local gem_path=$1
-        local bin=$2
-        cat << EOF
+  function create_bundle_exec_wapper {
+    local gem_path=$1
+    local bin=$2
+    cat << EOF
 #!/bin/sh
 
 cd $gem_path
 bundle exec $bin \$*
 EOF
-    }
+  }
 
-
-# Display message
-
-    _message()
-    {
-        echo $1
-        echo
-    }
 
 # Warning
 
-    _warn()
-    {
-        _message $1
-        exit 1
-    }
+  function _warn {
+    echo $1
+    exit 1
+  }
 
 
 # Start bundle installing
 
-    initialize
+  function run {
+    initialize && {
 
-    for gem_path in `ls -d $BUNDLES/*`; do
+      for gem_path in `ls -d $BUNDLES/*`; do
         bundle_install_at $gem_path
 
         gem_bin_path=$gem_path/bin
         for bin in `get_gem_bin_files $gem_bin_path`; do
-            bin_path=$BUNDLES/bin/$bin
-            _message "Install \`$bin\` to $bin_path"
-            create_bundle_exec_wapper $gem_path $bin > $bin_path
-            chmod +x $bin_path
+          bin_path=$BUNDLES/bin/$bin
+          create_bundle_exec_wapper $gem_path $bin > $bin_path
+          chmod +x $bin_path
+          echo "It was installed \`$bin\` into $bin_path"
         done
-    done
+      done
 
-    exit 0
+      exit 0
+    }
+  }
+
+run $@

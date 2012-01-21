@@ -29,7 +29,7 @@ set -e
 # Return RubyGems executable file list
 
   function get_gem_bin_files {
-    local bindir=$1
+    local bindir=$1/bin
     [ -d $bindir ] && ls $bindir
   }
 
@@ -49,7 +49,7 @@ set -e
 
 # Create a `bundle exec` wrapper script
 
-  function create_bundle_exec_wapper {
+  function create_bundle_exec_wrapper {
     local gem_path=$1
     local bin=$2
     cat << EOF
@@ -77,10 +77,9 @@ EOF
       for gem_path in `ls -d $BUNDLES/*`; do
         bundle_install_at $gem_path
 
-        gem_bin_path=$gem_path/bin
-        for bin in `get_gem_bin_files $gem_bin_path`; do
+        for bin in `get_gem_bin_files $gem_path`; do
           bin_path=$BUNDLES/bin/$bin
-          create_bundle_exec_wapper $gem_path $bin > $bin_path
+          create_bundle_exec_wrapper $gem_path $bin > $bin_path
           chmod +x $bin_path
           echo "It was installed \`$bin\` into $bin_path"
         done

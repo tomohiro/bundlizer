@@ -6,87 +6,85 @@ set -e
 
   readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
   readonly BUNDLES=$PREFIX/bundles
+  readonly COMMANDS=$PREFIX/commands
+
+  readonly bin_name=`basename $0`
+  readonly command=$1
+
 
 # Check requirements
 
   function initialize {
     if ! type gem &> /dev/null; then
-      _warn 'RubyGems not found'
+      warn 'RubyGems not found'
     fi
 
     if ! type bundle &> /dev/null; then
-      _warn 'Bundler not found'
+      warn 'Bundler not found'
     fi
 
     if [ ! -d $BUNDLES ]; then
       mkdir -p $BUNDLES/bin
     fi
 
-    return 0
+    include_commands
   }
 
 
-# Return RubyGems executable file list
+# Include the Bundlizer commands
 
-  function get_gem_bin_files {
-    local bindir=$1/bin
-    [ -d $bindir ] && ls $bindir
+  function include_commands {
+    for command_file in `ls $COMMANDS/*`; do
+      source $command_file
+    done
   }
 
 
-# Bundle install under the vendor directory
+# Display warning message and exit
 
-  function bundle_install_at {
-    local gem_path=$1
-    if [ -f $gem_path/Gemfile ]; then
-      cd $gem_path
-      echo
-      echo "Start bundle installing to $gem_path"
-      bundle install --path vendor/bundle
-    fi
-  }
-
-
-# Create a `bundle exec` wrapper script
-
-  function create_bundle_exec_wrapper {
-    local gem_path=$1
-    local bin=$2
-    cat << EOF
-#!/bin/sh
-
-cd $gem_path
-bundle exec $bin \$*
-EOF
-  }
-
-
-# Warning
-
-  function _warn {
+  function warn {
     echo $1
     exit 1
   }
 
 
-# Start bundle installing
+  function usage {
+    echo "Usage for $bin_name"
+    echo
+    echo 'Basic commands:'
+    echo '  install  user/repository #=> git://github.com/user/repository'
+    echo '  update   [repository]'
+    echo
+    echo '  help'
+    echo '  version'
+    exit 0
+  }
 
-  function run {
-    initialize && {
 
-      for gem_path in `ls -d $BUNDLES/*`; do
-        bundle_install_at $gem_path
+# Start the Bundlizer
 
-        for bin in `get_gem_bin_files $gem_path`; do
-          bin_path=$BUNDLES/bin/$bin
-          create_bundle_exec_wrapper $gem_path $bin > $bin_path
-          chmod +x $bin_path
-          echo "It was installed \`$bin\` into $bin_path"
-        done
-      done
+  function bundlizer {
+
+    [ -z $command ] && usage || {
+      initialize
+
+      case $command in
+        'help' | '--help')
+          usage
+          ;;
+        *)
+          if [ $(command -v $command) ]; then
+            shift 1
+            $command $@
+          else
+            warn "$bin_name: Could not find command \"$command\". See '$bin_name help' for more information on a specific command"
+          fi
+          ;;
+      esac
 
       exit 0
     }
   }
 
-run $@
+
+bundlizer $@

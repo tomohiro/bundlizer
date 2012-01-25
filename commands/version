@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+# Display the Bundler version
+
+  function version {
+    cat $PREFIX/VERSION
+  }

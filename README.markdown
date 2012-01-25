@@ -1,6 +1,13 @@
-Bundlizer [![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
+Bundlizer
 ================================================================================
 
+[![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
+
+
+Overview
+--------------------------------------------------------------------------------
+
+The Bundlizer is manage Bundler apps from the command line.
 
 
 Requirements
@@ -14,25 +21,25 @@ Requirements
 
 
 
-Installation
+Setup
 --------------------------------------------------------------------------------
 
-1. Run this command
+To install the Bundlizer, open a terminal and run this command
 
-        $ curl -L http://git.io/bundlizer-install | sh
+    $ curl -L http://git.io/bundlizer-install | sh
 
-2. Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
+Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
 
-        $ echo 'source $HOME/.bundlizer/etc/bashrc' >> ~/.bash_profile
+    $ echo 'source $HOME/.bundlizer/etc/bashrc' >> ~/.bash_profile
 
-3. Restart your shell or `exec $SHELL`
+Restart your shell or `exec $SHELL`
 
 
 
 Usage
 --------------------------------------------------------------------------------
 
-### Install RubyGems project from GitHub repository
+### Install Bundler apps from GitHub repository
 
 1. Install
 
@@ -64,19 +71,15 @@ Usage
         $ heroku version
         heroku-gem/2.18.1
 
-        $ type github
-        github is /home/tomohiro/.bundlizer/bundles/bin/github
-        $ github version
-        git version 1.7.4.1
 
 
-### Update repositories
+### Update apps
 
-1. Update the named repository
+1. Update the named app
 
         $ bundlizer update heroku
 
-2. Update all cloned repositories
+2. Update all cloned apps
 
         $ bundlizer update
 

@@ -17,12 +17,9 @@ Requirements
 Installation
 --------------------------------------------------------------------------------
 
-### Install
+1. Run this command
 
-1. Clone the Bundlizer into `~/.bundlizer`
-
-        $ cd
-        $ git clone git://github.com/Tomohiro/bundlizer.git .bundlizer
+        $ curl "https://raw.github.com/Tomohiro/bundlizer/master/install.sh" | sh
 
 2. Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
 

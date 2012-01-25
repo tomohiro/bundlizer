@@ -39,7 +39,7 @@ Usage
 
 1. Install
 
-    e.g. `git:/github.com/heroku/heroku.git`
+    e.g. `git://github.com/heroku/heroku.git`
 
         $ bundlizer install heroku/heroku
         Cloning into heroku...
@@ -73,13 +73,15 @@ Usage
         git version 1.7.4.1
 
 
-### Update reositories
+### Update repositories
 
-    $ bundlizer update heroku
+1. Update the named repository
 
-Update all repository
+        $ bundlizer update heroku
 
-    $ bundlizer update
+2. Update all cloned repositories
+
+        $ bundlizer update
 
 
 ### Uninstall

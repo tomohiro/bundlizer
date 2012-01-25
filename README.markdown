@@ -1,5 +1,9 @@
-Bundlizer [![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
+Bundlizer
 ================================================================================
+
+[![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
+
+[![endorse](http://api.coderwall.com/tomohiro/endorsecount.png)](http://coderwall.com/tomohiro)
 
 
 Requirements

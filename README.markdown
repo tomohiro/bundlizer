@@ -19,13 +19,13 @@ Installation
 
 1. Run this command
 
-        $ curl "https://raw.github.com/Tomohiro/bundlizer/master/install.sh" | sh
+        $ curl -L http://git.io/bundlizer-install | sh
 
 2. Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
 
         $ echo 'source $HOME/.bundlizer/etc/bashrc' >> ~/.bash_profile
 
-3. Restart your shell
+3. Restart your shell or `exec $SHELL`
 
 
 

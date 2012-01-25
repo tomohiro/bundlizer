@@ -1,9 +1,6 @@
-Bundlizer
+Bundlizer [![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
 ================================================================================
 
-[![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
-
-[![endorse](http://api.coderwall.com/tomohiro/endorsecount.png)](http://coderwall.com/tomohiro)
 
 
 Requirements
@@ -38,25 +35,32 @@ Installation
 Usage
 --------------------------------------------------------------------------------
 
-### Upgrade the Bundlizer
+### Install RubyGems project from GitHub repository
 
-    $ cd .bundlizer
-    $ git pull origin master
+1. Install
 
+    e.g. `git:/github.com/heroku/heroku.git`
 
-### Deploy Bundler project
+        $ bundlizer install heroku/heroku
+        Cloning into heroku...
+        remote: Counting objects: 9595, done.
+        remote: Compressing objects: 100% (3304/3304), done.
+        remote: Total 9595 (delta 6435), reused 9094 (delta 5994)
+        Receiving objects: 100% (9595/9595), 1.18 MiB | 316 KiB/s, done.
+        Resolving deltas: 100% (6435/6435), done.
 
-1. Clone a repository
+        Start bundle installing to /home/tomohiro/.bundlizer/bundles/heroku
+        Fetching gem metadata from http://rubygems.org/.........
+        Installing rake (0.9.2)
+        ..snip..
+        Using heroku (2.18.1) from source at .
+        ..snip..
+        Installing webmock (1.7.7)
+        Using bundler (1.1.rc.7)
+        Your bundle is complete! It was installed into ./vendor/bundle
+        It was installed `heroku` into /home/tomohiro/.bundlizer/bundles/bin/heroku
 
-        $ cd .bundlizer/bundles
-        $ git clone git://github.com/heroku/heroku.git
-        $ git clone git://github.com/defunkt/github-gem.git
-
-2. Run `bundlizer`
-
-        $ bundlizer
-
-3. You don't need bundler command. You can use `foo` instead of `bundle exec foo`
+2. You don't need `bundle` command. You can use `foo` instead of `bundle exec foo`
 
         $ type heroku
         heroku is /home/tomohiro/.bundlizer/bundles/bin/heroku
@@ -67,6 +71,27 @@ Usage
         github is /home/tomohiro/.bundlizer/bundles/bin/github
         $ github version
         git version 1.7.4.1
+
+
+### Update reositories
+
+    $ bundlizer update heroku
+
+Update all repository
+
+    $ bundlizer update
+
+
+### Uninstall
+
+TODO
+
+
+
+### Upgrade the Bundlizer
+
+    $ cd .bundlizer
+    $ git pull origin master
 
 
 

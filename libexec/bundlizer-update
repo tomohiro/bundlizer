@@ -19,7 +19,7 @@ set -e
         ;;
       *)
         if [ ! -d $BUNDLES/$target ]; then
-          echo "`basename $0`: no such target \"$target\""
+          echo "bundlizer: no such target \"$target\""
           exit 1
         fi
         bundle_update_at $BUNDLES/$target

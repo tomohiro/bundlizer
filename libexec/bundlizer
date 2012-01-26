@@ -38,6 +38,8 @@ set -e
       echo '  update   [app]            # Named app git pull and bundle update(or all update)'
       echo '  list                      # Display installed bundler apps'
       echo
+      echo '  upgrade                   # Upgrade the Bundlizer'
+      echo
       echo '  help'
       echo '  version'
       exit 0

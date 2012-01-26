@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+
+# Define constants
+
+    readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
+
+
+# Upgrade the Bundlizer
+
+    upgrade() {
+      cd $PREFIX
+      git pull origin master
+    }
+
+
+upgrade $@
+
+exit 0

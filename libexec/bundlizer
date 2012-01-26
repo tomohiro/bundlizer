@@ -31,17 +31,18 @@ set -e
 # Display the Bundlizer help
 
     usage() {
-      echo "Usage for $bin_name"
+      echo "Usage: $bin_name COMMAND [command-specific-options]"
       echo
-      echo 'Basic commands:'
-      echo '  install  user/repository  # git clone git://github.com/user/repository, and bundle install'
-      echo '  update   [app]            # Named app git pull and bundle update(or all update)'
-      echo '  list                      # Display installed bundler apps'
+      echo 'Bundler apps commands:'
+      echo '  install   user/repository  # git clone git://github.com/user/repository, and bundle install'
+      echo '  update    [app]            # named app git pull and bundle update(or all update)'
+      echo '  uninstall app              # uninstall the app'
+      echo '  list                       # display installed bundler apps'
       echo
-      echo '  upgrade                   # Upgrade the Bundlizer'
-      echo
-      echo '  help'
-      echo '  version'
+      echo 'Bundlizer commands:'
+      echo '  upgrade                    # upgrade the Bundlizer'
+      echo '  help, --help               # display usage'
+      echo '  version                    # display version'
       exit 0
     }
 
@@ -64,7 +65,8 @@ set -e
           if [ -f "$COMMANDS/bundlizer-$command" ]; then
             exec "$COMMANDS/bundlizer-$command" $@
           else
-            echo "$bin_name: Could not find command \"$command\". See '$bin_name help' for more information on a specific command"
+            echo "$bin_name: Could not find command \"$command\"."
+            echo "See '$bin_name help' for more information on a specific command"
             exit 1
           fi
           ;;

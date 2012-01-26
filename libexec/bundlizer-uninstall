@@ -20,7 +20,7 @@ set -e
       fi
 
       if [ -d $BUNDLES/$app ] ; then
-        echo -n "uninstall: remove app '$app'? (yes/no) "
+        /bin/echo -n "uninstall: remove app '$app'? (yes/no) "
         read input
 
         [ ! $input = 'yes' ] && exit 1

@@ -80,13 +80,13 @@ set -e
 # Create a `bundle exec` wrapper script
 
     create_bundle_exec_wrapper() {
-      local gem_path=$1
+      local app=`basename $1`
       local bin=$2
       cat << EOF
 #!/bin/sh
 
-cd $gem_path
-bundle exec $bin \$*
+cd \$(cd \$(dirname \$0)/.. && pwd)/bundles/$app
+bundle exec $bin \$@
 EOF
     }
 

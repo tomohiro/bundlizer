@@ -24,6 +24,8 @@ Requirements
 Setup
 --------------------------------------------------------------------------------
 
+### Installation
+
 To install the Bundlizer, open a terminal and run this command
 
     $ curl -L http://git.io/bundlizer-install | sh
@@ -33,6 +35,12 @@ Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
     $ echo 'source $HOME/.bundlizer/etc/bashrc' >> ~/.bash_profile
 
 Restart your shell or `exec $SHELL`
+
+
+### Upgrade the Bundlizer
+
+    $ bundlizer upgrade
+
 
 
 
@@ -88,12 +96,6 @@ Usage
 
 TODO
 
-
-
-### Upgrade the Bundlizer
-
-    $ cd .bundlizer
-    $ git pull origin master
 
 
 

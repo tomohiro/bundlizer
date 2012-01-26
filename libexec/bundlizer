@@ -10,12 +10,11 @@ set -e
     readonly COMMANDS=$PREFIX/libexec
 
     readonly bin_name=`basename $0`
-    readonly command=$1
 
 
 # Check requirements
 
-    function initialize {
+    initialize() {
       if ! type gem &> /dev/null; then
         echo 'RubyGems not found'
         exit 1
@@ -26,16 +25,12 @@ set -e
         exit 1
       fi
 
-      if [ ! -d $PREFIX/apps ]; then
-        mkdir -p $PREFIX/apps
-      fi
-
     }
 
 
 # Display the Bundlizer help
 
-    function usage {
+    usage() {
       echo "Usage for $bin_name"
       echo
       echo 'Basic commands:'
@@ -50,7 +45,10 @@ set -e
 
 # Start the Bundlizer
 
-    function bundlizer {
+    bundlizer() {
+
+      local command=$1
+      shift 1
 
       [ -z $command ] && usage || {
         initialize
@@ -61,7 +59,6 @@ set -e
           ;;
         *)
           if [ -f "$COMMANDS/bundlizer-$command" ]; then
-            shift 1
             exec "$COMMANDS/bundlizer-$command" $@
           else
             echo "$bin_name: Could not find command \"$command\". See '$bin_name help' for more information on a specific command"

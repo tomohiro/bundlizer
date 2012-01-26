@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+# Display the Bundlizer version
+
+    version() {
+      cat "$(cd $(dirname $0)/.. && pwd)/VERSION"
+    }
+
+
+version $@
+
+exit 0

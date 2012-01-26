@@ -2,89 +2,77 @@
 
 set -e
 
+
 # Define constants
 
-  readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
-  readonly BUNDLES=$PREFIX/bundles
-  readonly COMMANDS=$PREFIX/commands
+    readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
+    readonly BUNDLES=$PREFIX/bundles
+    readonly COMMANDS=$PREFIX/libexec
 
-  readonly bin_name=`basename $0`
-  readonly command=$1
+    readonly bin_name=`basename $0`
+    readonly command=$1
 
 
 # Check requirements
 
-  function initialize {
-    if ! type gem &> /dev/null; then
-      warn 'RubyGems not found'
-    fi
+    function initialize {
+      if ! type gem &> /dev/null; then
+        echo 'RubyGems not found'
+        exit 1
+      fi
 
-    if ! type bundle &> /dev/null; then
-      warn 'Bundler not found'
-    fi
+      if ! type bundle &> /dev/null; then
+        echo 'Bundler not found'
+        exit 1
+      fi
 
-    if [ ! -d $BUNDLES ]; then
-      mkdir -p $BUNDLES/bin
-    fi
+      if [ ! -d $PREFIX/apps ]; then
+        mkdir -p $PREFIX/apps
+      fi
 
-    include_commands
-  }
-
-
-# Include the Bundlizer commands
-
-  function include_commands {
-    for command_file in `ls $COMMANDS/*`; do
-      source $command_file
-    done
-  }
+    }
 
 
-# Display warning message and exit
+# Display the Bundlizer help
 
-  function warn {
-    echo $1
-    exit 1
-  }
-
-
-  function usage {
-    echo "Usage for $bin_name"
-    echo
-    echo 'Basic commands:'
-    echo '  install  user/repository #=> git://github.com/user/repository'
-    echo '  update   [repository]'
-    echo
-    echo '  help'
-    echo '  version'
-    exit 0
-  }
+    function usage {
+      echo "Usage for $bin_name"
+      echo
+      echo 'Basic commands:'
+      echo '  install  user/repository #=> git://github.com/user/repository'
+      echo '  update   [repository]'
+      echo
+      echo '  help'
+      echo '  version'
+      exit 0
+    }
 
 
 # Start the Bundlizer
 
-  function bundlizer {
+    function bundlizer {
 
-    [ -z $command ] && usage || {
-      initialize
+      [ -z $command ] && usage || {
+        initialize
 
-      case $command in
+        case $command in
         'help' | '--help')
           usage
           ;;
         *)
-          if [ $(command -v $command) ]; then
+          if [ -f "$COMMANDS/bundlizer-$command" ]; then
             shift 1
-            $command $@
+            exec "$COMMANDS/bundlizer-$command" $@
           else
-            warn "$bin_name: Could not find command \"$command\". See '$bin_name help' for more information on a specific command"
+            echo "$bin_name: Could not find command \"$command\". See '$bin_name help' for more information on a specific command"
+            exit 1
           fi
           ;;
-      esac
+        esac
 
-      exit 0
+        exit 0
+      }
     }
-  }
 
 
 bundlizer $@

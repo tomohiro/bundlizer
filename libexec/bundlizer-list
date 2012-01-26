@@ -11,8 +11,10 @@ set -e
 # Display installed bundler apps
 
     list() {
+      echo "Bundler apps installed by the Bundlizer:"
       for app in `ls $BUNDLES`; do
-        echo "$app (`ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g'`)"
+        echo " * $app"
+        echo "     apps: `ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g'`"
       done
     }
 

@@ -12,10 +12,7 @@ set -e
 
     list() {
       for app in `ls $BUNDLES`; do
-        echo $app
-        for bin in `ls $BUNDLES/$app/bin`; do
-          echo "   apps/$bin"
-        done
+        echo "$app (`ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g'`)"
       done
     }
 

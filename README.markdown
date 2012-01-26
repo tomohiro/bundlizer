@@ -81,6 +81,28 @@ Usage
 
 
 
+### Show installed bundler apps
+
+    $ bundlizer list
+    Bundler apps installed by the Bundlizer:
+     * gist
+         apps: gist
+     * gitfinger
+         apps: gitfinger
+     * github-gem
+         apps: gh,github
+     * heroku
+         apps: heroku
+     * jekyll
+         apps: jekyll
+     * redmine_irc_gateway
+         apps: rig
+     * vmc
+         apps: vmc
+     * yard
+         apps: yard,yardoc,yri
+
+
 ### Update apps
 
 1. Update the named app
@@ -94,8 +116,11 @@ Usage
 
 ### Uninstall
 
-TODO
-
+    $ bundlizer uninstall heroku
+    uninstall: remove app 'heroku'? (yes/no) yes
+    rm -f /home/tomohiro/.bundlizer/apps/heroku
+    rm -rf /home/tomohiro/.bundlizer/bundles/heroku
+    It was Uninstalled 'heroku'
 
 
 
@@ -104,5 +129,6 @@ TODO
 LICENSE
 --------------------------------------------------------------------------------
 
+&copy; 2012 Tomohiro, TAIRA.
 This project is licensed under the MIT license.
 See LICENSE for details.

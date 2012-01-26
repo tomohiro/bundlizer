@@ -34,8 +34,9 @@ set -e
       echo "Usage for $bin_name"
       echo
       echo 'Basic commands:'
-      echo '  install  user/repository #=> git://github.com/user/repository'
-      echo '  update   [repository]'
+      echo '  install  user/repository  # git clone git://github.com/user/repository, and bundle install'
+      echo '  update   [app]            # Named app git pull and bundle update(or all update)'
+      echo '  list                      # Display installed bundler apps'
       echo
       echo '  help'
       echo '  version'

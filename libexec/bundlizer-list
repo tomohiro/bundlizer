@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+
+# Define constants
+
+    readonly BUNDLES=$(cd $(dirname $0)/.. && pwd)/bundles
+
+
+# Display installed bundler apps
+
+    list() {
+      ls $BUNDLES
+    }
+
+
+list $@
+
+exit 0

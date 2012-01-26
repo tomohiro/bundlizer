@@ -4,13 +4,19 @@ set -e
 
 # Define constants
 
-    readonly BUNDLES=$(cd $(dirname $0)/.. && pwd)/bundles
+    readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
+    readonly BUNDLES=$PREFIX/bundles
 
 
 # Display installed bundler apps
 
     list() {
-      ls $BUNDLES
+      for app in `ls $BUNDLES`; do
+        echo $app
+        for bin in `ls $BUNDLES/$app/bin`; do
+          echo "   apps/$bin"
+        done
+      done
     }
 
 

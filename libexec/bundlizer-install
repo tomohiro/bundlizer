@@ -13,16 +13,16 @@ set -e
 
     install() {
       check_bundles_dir_exists && {
-        local user=`echo $1 | cut -d '/' -f1`
-        local app=`echo $1 | cut -d '/' -f2`
-        if [ -n $user -a -n $app ]; then
+        if echo $1 | egrep '^.+/.+$'; then
+          local user=`echo $1 | cut -d '/' -f1`
+          local app=`echo $1 | cut -d '/' -f2`
           local url="git://github.com/$user/$app.git"
           cd $BUNDLES
           git clone $url
           bundle_install_at $BUNDLES/$app
           install_bundle_exec_wrappers $BUNDLES/$app
         else
-          echo "Option Format error. See '`basename $0` help'"
+          echo "Option Format error. See 'bundlizer help'"
           exit 1
         fi
       }

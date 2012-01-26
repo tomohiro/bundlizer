@@ -70,14 +70,14 @@ Usage
         Installing webmock (1.7.7)
         Using bundler (1.1.rc.7)
         Your bundle is complete! It was installed into ./vendor/bundle
-        It was installed `heroku` into /home/tomohiro/.bundlizer/bundles/bin/heroku
+        It was installed `heroku` into /home/tomohiro/.bundlizer/apps/heroku
 
 2. You don't need `bundle` command. You can use `foo` instead of `bundle exec foo`
 
         $ type heroku
-        heroku is /home/tomohiro/.bundlizer/bundles/bin/heroku
+        heroku is /home/tomohiro/.bundlizer/apps/heroku
         $ heroku version
-        heroku-gem/2.18.1
+        heroku-gem/2.19.0
 
 
 

@@ -58,20 +58,20 @@ set -e
 
     install_bundle_exec_wrappers() {
       check_apps_dir_exists && {
-        local gem_path=$1
-        for bin in `get_gem_bin_files $gem_path`; do
+        local app_path=$1
+        for bin in `get_app_bin_files $app_path`; do
           bin_path=$APPS/$bin
-          create_bundle_exec_wrapper $gem_path $bin > $bin_path
+          create_bundle_exec_wrapper $app_path $bin > $bin_path
           chmod +x $bin_path
-          echo "It was installed \`$bin\` into $bin_path"
+          echo "It was installed '$bin' into $bin_path"
         done
       }
     }
 
 
-# Return RubyGems executable file list
+# Return Bundler apps executable file list
 
-    get_gem_bin_files() {
+    get_app_bin_files() {
       local bindir=$1/bin
       [ -d $bindir ] && ls $bindir
     }

@@ -7,7 +7,7 @@ Bundlizer
 Overview
 --------------------------------------------------------------------------------
 
-The Bundlizer is manage Bundler apps from the command line.
+The Bundlizer is Bundler apps management tool from the command line.
 
 
 Requirements

@@ -4,8 +4,7 @@ set -e
 
 # Define constants
 
-    readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
-    readonly BUNDLES=$PREFIX/bundles
+    readonly BUNDLES=$(cd $(dirname $0)/.. && pwd)$PREFIX/bundles
 
 
 # Display installed bundler apps

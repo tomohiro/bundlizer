@@ -2,6 +2,7 @@
 
 set -e
 
+
 # Define constants
 
     readonly BUNDLES="$(cd $(dirname $0)/.. && pwd)/bundles"
@@ -13,14 +14,14 @@ set -e
       local target=$1
       case $target in
       '' | 'all')
-        for gem_path in `ls -d $BUNDLES/*`; do
+        for gem_path in $(ls -d $BUNDLES/*); do
           bundle_update_at $gem_path
         done
         ;;
       *)
         if [ ! -d $BUNDLES/$target ]; then
-          echo "bundlizer: no such target \"$target\""
-          exit 1
+          echo "bundlizer: no such target '$target'"
+          return 1
         fi
         bundle_update_at $BUNDLES/$target
         ;;
@@ -43,6 +44,5 @@ set -e
     }
 
 
-update $@
 
-exit 0
+update $@

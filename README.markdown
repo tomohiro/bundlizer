@@ -83,21 +83,19 @@ Usage
 
     $ bundlizer list
     Bundler apps installed by the Bundlizer:
-     * gist
-         apps: gist
-     * gitfinger
-         apps: gitfinger
-     * github-gem
+     * foreman (git://github.com/ddollar/foreman.git)
+         apps: foreman,runner
+     * github-gem (git://github.com/defunkt/github-gem.git)
          apps: gh,github
-     * heroku
+     * guard (git://github.com/guard/guard.git)
+         apps: guard
+     * heroku (git://github.com/heroku/heroku.git)
          apps: heroku
-     * jekyll
-         apps: jekyll
-     * redmine_irc_gateway
-         apps: rig
-     * vmc
+     * pry (git://github.com/pry/pry.git)
+         apps: pry
+     * vmc (git://github.com/cloudfoundry/vmc.git)
          apps: vmc
-     * yard
+     * yard (git://github.com/lsegal/yard.git)
          apps: yard,yardoc,yri
 
 

@@ -2,6 +2,7 @@
 
 set -e
 
+
 # Define constants
 
     readonly BUNDLES=$(cd $(dirname $0)/.. && pwd)$PREFIX/bundles
@@ -11,13 +12,11 @@ set -e
 
     list() {
       echo "Bundler apps installed by the Bundlizer:"
-      for app in `ls $BUNDLES`; do
+      for app in $(ls $BUNDLES); do
         echo " * $app"
-        echo "     apps: `ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g'`"
+        echo "     apps: $(ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g')"
       done
     }
 
 
 list $@
-
-exit 0

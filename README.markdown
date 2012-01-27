@@ -1,6 +1,6 @@
 Bundlizer
 ================================================================================
-The Bundlizer is Bundler apps management tool from the command line. *DO NOT USE sudo*
+The Bundlizer is Bundler apps management tool from the command line. _DO NOT USE sudo_
 
 [![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
 
@@ -26,7 +26,7 @@ Setup
 
 To install the Bundlizer, open a terminal and run this command
 
-    $ curl -L http://git.io/bundlizer-install | sh
+    $ curl -L git.io/bundlizer-install | sh
 
 Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
 

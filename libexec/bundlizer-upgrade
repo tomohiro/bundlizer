@@ -17,5 +17,3 @@ set -e
 
 
 upgrade $@
-
-exit 0

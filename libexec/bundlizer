@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -9,22 +9,21 @@ set -e
     readonly BUNDLES=$PREFIX/bundles
     readonly COMMANDS=$PREFIX/libexec
 
-    readonly bin_name=`basename $0`
+    readonly bin_name=$(basename $0)
 
 
-# Check requirements
+# Check dependencies
 
-    initialize() {
-      if ! type gem &> /dev/null; then
+    check_dependencies() {
+      if ! type gem > /dev/null; then
         echo 'RubyGems not found'
-        exit 1
+        return 1
       fi
 
-      if ! type bundle &> /dev/null; then
+      if ! type bundle > /dev/null; then
         echo 'Bundler not found'
-        exit 1
+        return 1
       fi
-
     }
 
 
@@ -43,7 +42,6 @@ set -e
       echo '  upgrade                    # upgrade the Bundlizer'
       echo '  help, --help               # display usage'
       echo '  version                    # display version'
-      exit 0
     }
 
 
@@ -54,8 +52,7 @@ set -e
       local command=$1
       shift 1
 
-      [ -z $command ] && usage || {
-        initialize
+      check_dependencies && {
 
         case $command in
         'help' | '--help')
@@ -65,16 +62,19 @@ set -e
           if [ -f "$COMMANDS/bundlizer-$command" ]; then
             exec "$COMMANDS/bundlizer-$command" $@
           else
-            echo "$bin_name: Could not find command \"$command\"."
+            echo "$bin_name: Could not find command '$command'."
             echo "See '$bin_name help' for more information on a specific command"
-            exit 1
+            return 1
           fi
           ;;
         esac
 
-        exit 0
+        return 0
       }
     }
 
+[ -z $1 ] && usage && {
+  exit $?
+}
 
 bundlizer $@

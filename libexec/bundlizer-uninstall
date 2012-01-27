@@ -2,6 +2,7 @@
 
 set -e
 
+
 # Define constants
 
     readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
@@ -16,26 +17,29 @@ set -e
 
       if [ -z $app ]; then
         echo "Option error. See 'bundlizer help'"
-        exit 1
+        return 1
       fi
 
       if [ -d $BUNDLES/$app ] ; then
         /bin/echo -n "uninstall: remove app '$app'? (yes/no) "
         read input
 
-        [ ! $input = 'yes' ] && exit 1
+        [ ! $input = 'yes' ] && return 1
 
         local app_path=$BUNDLES/$app
-        for bin in `get_app_bin_files $app_path`; do
+
+        for bin in $(get_app_bin_files $app_path); do
           echo "rm -f $APPS/$bin"
           rm -f $APPS/$bin
         done
 
         echo "rm -rf $app_path"
         rm -rf $app_path
+
         echo "It was Uninstalled '$app'"
       fi
     }
+
 
 # Return Bundler apps executable file list
 
@@ -47,5 +51,3 @@ set -e
 
 
 uninstall $@
-
-exit 0

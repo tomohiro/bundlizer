@@ -2,6 +2,7 @@
 
 set -e
 
+
 # Define constants
 
     readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
@@ -23,21 +24,17 @@ set -e
           install_bundle_exec_wrappers $BUNDLES/$app
         else
           echo "Option Format error. See 'bundlizer help'"
-          exit 1
+          return 1
         fi
       }
     }
 
 
+# Check if bundles directory exists
+
     check_bundles_dir_exists() {
-      [ ! -d $BUNDLES ] && mkdir $BUNDLES
-      return 0
-    }
-
-
-    check_apps_dir_exists() {
-      [ ! -d $APPS ] && mkdir $APPS
-      return 0
+      [ -d $BUNDLES ] && return 0
+      mkdir $BUNDLES
     }
 
 
@@ -59,13 +56,21 @@ set -e
     install_bundle_exec_wrappers() {
       check_apps_dir_exists && {
         local app_path=$1
-        for bin in `get_app_bin_files $app_path`; do
+        for bin in $(get_app_bin_files $app_path); do
           bin_path=$APPS/$bin
           create_bundle_exec_wrapper $app_path $bin > $bin_path
           chmod +x $bin_path
           echo "It was installed '$bin' into $bin_path"
         done
       }
+    }
+
+
+# Check if bundler apps directory exists
+
+    check_apps_dir_exists() {
+      [ -d $APPS ] && return 0
+      mkdir $APPS
     }
 
 
@@ -80,7 +85,7 @@ set -e
 # Create a `bundle exec` wrapper script
 
     create_bundle_exec_wrapper() {
-      local app=`basename $1`
+      local app=$(basename $1)
       local bin=$2
       cat << EOF
 #!/bin/sh
@@ -91,6 +96,5 @@ EOF
     }
 
 
-install $@
 
-exit 0
+install $@

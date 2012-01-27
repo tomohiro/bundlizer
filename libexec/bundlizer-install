@@ -15,8 +15,8 @@ set -e
     install() {
       check_bundles_dir_exists && {
         if echo $1 | egrep '^.+/.+$'; then
-          local user=`echo $1 | cut -d '/' -f1`
-          local app=`echo $1 | cut -d '/' -f2`
+          local user=$(echo $1 | cut -d '/' -f1)
+          local app=$(echo $1 | cut -d '/' -f2)
           local url="git://github.com/$user/$app.git"
           cd $BUNDLES
           git clone $url

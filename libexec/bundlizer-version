@@ -10,5 +10,3 @@ set -e
 
 
 version $@
-
-exit 0

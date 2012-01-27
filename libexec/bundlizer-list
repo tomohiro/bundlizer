@@ -12,11 +12,16 @@ set -e
 
     list() {
       echo "Bundler apps installed by the Bundlizer:"
+      echo
+
+      [ ! -d $BUNDLES ] && return
+
       for app in $(ls $BUNDLES); do
         echo " * $app ($(cd $BUNDLES/$app; git remote show origin -n | grep "Fetch URL" | cut -d' ' -f5))"
         echo "     apps: $(ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g')"
       done
     }
+
 
 
 list $@

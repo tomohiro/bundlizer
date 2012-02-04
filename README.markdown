@@ -40,6 +40,9 @@ Restart your shell or `exec $SHELL`
     $ bundlizer upgrade
 
 
+### Uninstall the Bundlizer
+
+    $ rm -rf ~/.bundlizer
 
 
 Usage

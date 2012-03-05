@@ -90,8 +90,9 @@ set -e
       cat << EOF
 #!/bin/sh
 
+current=\$(pwd)
 cd \$(cd \$(dirname \$0)/.. && pwd)/bundles/$app
-bundle exec $bin \$@
+bundle exec bash -c "cd \$current && $bin \$@"
 EOF
     }
 

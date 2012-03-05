@@ -5,6 +5,14 @@ The Bundlizer is Bundler apps management tool from the command line. _DO NOT USE
 [![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
 
 
+
+        ____                  _____
+       / __ )__  ______  ____/ / (_)___  ___  _____
+      / __  / / / / __ \/ __  / / /_  / / _ \/ ___/
+     / /_/ / /_/ / / / / /_/ / / / / /_/  __/ /
+    /_____/\__,_/_/ /_/\__,_/_/_/ /___/\___/_/
+
+
 ---
 
 

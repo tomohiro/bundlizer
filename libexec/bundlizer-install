@@ -92,7 +92,7 @@ set -e
 
 current=\$(pwd)
 cd \$(cd \$(dirname \$0)/.. && pwd)/bundles/$app
-bundle exec bash -c "cd \$current && $bin \$@"
+"'cd \$current && $bin \$@'" | xargs bundle exec bash -c
 EOF
     }
 

@@ -2,8 +2,6 @@ Bundlizer
 ================================================================================
 The Bundlizer is Bundler apps management tool from the command line. _DO NOT USE sudo_
 
-[![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
-
 ---
 
 Requirements

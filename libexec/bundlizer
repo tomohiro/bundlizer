@@ -44,6 +44,7 @@ set -e
       echo '  update    [app]            # named app git pull and bundle update(or update all)'
       echo '  uninstall app              # uninstall the app'
       echo '  list                       # display installed bundler apps'
+      echo '  run       app/command      # named app/command bundle exec (e.g. bundlizer run heroku/heroku)'
       echo
       echo 'Bundlizer commands:'
       echo '  upgrade                    # upgrade the Bundlizer'

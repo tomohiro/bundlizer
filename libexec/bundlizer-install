@@ -14,7 +14,7 @@ set -e
 
     install() {
       check_bundles_dir_exists && {
-        if echo $1 | egrep '^.+/.+$'; then
+        if echo $1 | egrep '^.+/.+$' >/dev/null; then
           local user=$(echo $1 | cut -d '/' -f1)
           local app=$(echo $1 | cut -d '/' -f2)
           local url="git://github.com/$user/$app.git"
@@ -90,8 +90,7 @@ set -e
       cat << EOF
 #!/bin/sh
 
-abs_path=\$(cd \$(dirname \$0)/.. && pwd)/bundles/$app
-RUBYOPT=-r\$abs_path/bundle/bundler/setup \$abs_path/bin/$bin \$@
+bundlizer run $app/$bin
 EOF
     }
 

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+
+
+# Define constants
+
+    readonly BUNDLES=$(cd $(dirname $0)/.. && pwd)$PREFIX/bundles
+
+
+# Run installed bundler apps
+
+    run() {
+      if echo $1 | egrep '^.+/.+$' >/dev/null; then
+        local app=$(echo $1 | cut -d '/' -f1)
+        local command=$(echo $1 | cut -d '/' -f2)
+
+        shift
+
+        local abs_path=$BUNDLES/$app
+        RUBYOPT="-I$abs_path/lib -r$abs_path/bundle/bundler/setup" $abs_path/bin/$command $@
+      else
+        echo "Option Format error. See 'bundlizer help'"
+        return 1
+      fi
+    }
+
+
+
+run $@

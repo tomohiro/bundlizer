@@ -46,7 +46,7 @@ set -e
         cd $gem_path
         echo
         echo "Start bundle installing to $gem_path"
-        bundle install --path vendor/bundle
+        bundle install --standalone --without development:test
       fi
     }
 
@@ -90,9 +90,8 @@ set -e
       cat << EOF
 #!/bin/sh
 
-current=\$(pwd)
-cd \$(cd \$(dirname \$0)/.. && pwd)/bundles/$app
-echo "'cd \$current && $bin \$@'" | xargs bundle exec bash -c
+abs_path=\$(cd \$(dirname \$0)/.. && pwd)/bundles/$app
+RUBYOPT=-r\$abs_path/bundle/bundler/setup \$abs_path/bin/$bin \$@
 EOF
     }
 

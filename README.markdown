@@ -9,9 +9,8 @@ Requirements
 
 - OSX or Ubuntu
 - Git
-- Ruby 1.9+
-- RubyGems
-- Bundler
+- Ruby 1.9.3+
+- Bundler 1.1+
 
 
 
@@ -98,15 +97,15 @@ Usage
          apps: yard,yardoc,yri
 
 
-### Update apps
+### Update bundler apps
 
-1. Update the named app
+#### Update the named app
 
-        $ bundlizer update heroku
+    $ bundlizer update heroku
 
-2. Update all cloned apps
+#### Update all apps
 
-        $ bundlizer update
+    $ bundlizer update
 
 
 ### Uninstall

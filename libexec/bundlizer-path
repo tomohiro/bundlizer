@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -e
+
+
+# Define constants
+
+    readonly BUNDLES="$(cd $(dirname $0)/.. && pwd)/bundles"
+
+
+# Display bundle app path
+
+    path() {
+      local target=$1
+      local app_path="$BUNDLES/$target"
+      if [ -d $app_path ]; then
+        echo $app_path
+      else
+        echo "bundlizer: no such target '$target'"
+        return 1
+      fi
+      return 0
+    }
+
+
+
+path $@

@@ -6,7 +6,6 @@ set -e
 # Define constants
 
     readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
-    readonly BUNDLES=$PREFIX/bundles
     readonly COMMANDS=$PREFIX/libexec
 
     readonly bin_name=$(basename $0)
@@ -16,12 +15,12 @@ set -e
 
     check_dependencies() {
       if ! type gem > /dev/null; then
-        echo 'RubyGems not found'
+        echo 'RubyGems not installed.'
         return 1
       fi
 
       if ! type bundle > /dev/null; then
-        echo 'Bundler not found'
+        echo 'Bundler not installed.'
         return 1
       fi
     }
@@ -37,7 +36,7 @@ set -e
      / /_/ / /_/ / / / / /_/ / / / / /_/  __/ /
     /_____/\__,_/_/ /_/\__,_/_/_/ /___/\___/_/'
       echo
-      echo "Usage: $bin_name COMMAND [command-specific-options]"
+      echo "Usage: $bin_name COMMAND [<args>]"
       echo
       echo 'Bundler apps commands:'
       echo '  install   user/repository  # git clone git://github.com/user/repository, and bundle install'
@@ -45,6 +44,7 @@ set -e
       echo '  uninstall app              # uninstall the app'
       echo '  list                       # display installed bundler apps'
       echo '  run       app/command      # named app/command bundle exec (e.g. bundlizer run heroku/heroku)'
+      echo '  path      app              # display installed bundler app path'
       echo
       echo 'Bundlizer commands:'
       echo '  upgrade                    # upgrade the Bundlizer'

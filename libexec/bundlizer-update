@@ -39,7 +39,7 @@ set -e
         echo "Start bundle update to $gem_path"
         git reset --hard
         git pull origin master
-        bundle update
+        bundle install
       fi
     }
 

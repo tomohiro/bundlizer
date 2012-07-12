@@ -70,9 +70,23 @@ Install (e.g. Ruby on Rails)
     It was installed 'tilt' into /home/tomohiro/.bundlizer/apps/tilt
     It was installed 'tt' into /home/tomohiro/.bundlizer/apps/tt
 
-    $ rehash
+
+
+You can start a rails project as usual
+
     $ rails -v
     Rails 3.2.6
+    $ rails new awesome-project
+    $ cd awesome-project
+    $ bundle install --path gems
+    $ rails s
+    => Booting WEBrick
+    => Rails 3.2.6 application starting in development on http://0.0.0.0:3000
+    => Call with -d to detach
+    => Ctrl-C to shutdown server
+    [2012-07-12 19:54:49] INFO  WEBrick 1.3.1
+    [2012-07-12 19:54:49] INFO  ruby 1.9.3 (2012-04-20) [i686-linux]
+    [2012-07-12 19:54:49] INFO  WEBrick::HTTPServer#start: pid=1479 port=3000
 
 
 ### Install apps from GitHub repository
@@ -119,6 +133,8 @@ You don't need `bundle` command. You can use `foo` instead of `bundle exec foo`
          apps: heroku
      * pry (git://github.com/pry/pry.git)
          apps: pry
+     * rails (rubygems.org: http://rubygems.org/gems/rails)
+          apps: erubis,rackup,rails,rake2thor,thor,tilt,tt
      * yard (git://github.com/lsegal/yard.git)
          apps: yard,yardoc,yri
 

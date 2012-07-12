@@ -11,35 +11,39 @@ set -e
 # Update repository
 
     update() {
-      local target=$1
-      case $target in
+      local app=$1
+      case $app in
       '' | 'all')
-        for gem_path in $(ls -d $BUNDLES/*); do
-          bundle_update_at $gem_path
+        for app_path in $(ls -d $BUNDLES/*); do
+          update_at $app_path
         done
         ;;
       *)
-        if [ ! -d $BUNDLES/$target ]; then
-          echo "bundlizer: no such target '$target'"
+        if [ ! -d $BUNDLES/$app ]; then
+          echo "bundlizer: no such app '$app'"
           return 1
         fi
-        bundle_update_at $BUNDLES/$target
+        update_at $BUNDLES/$app
         ;;
       esac
     }
 
 
-# Bundle update under the vendor directory
+# Update under the vendor directory
 
-    bundle_update_at() {
-      local gem_path=$1
-      if [ -f $gem_path/Gemfile ]; then
-        cd $gem_path
+    update_at() {
+      local app_path=$1
+      if [ -f $app_path/Gemfile ]; then
+        cd $app_path
         echo
-        echo "Start bundle update to $gem_path"
+        echo "Start bundle update to $app_path"
         git reset --hard
         git pull origin master
         bundle install
+      fi
+      if [ -d $app_path/specifications ]; then
+        echo "Start gem update to $app_path"
+        GEM_PATH= GEM_HOME=$app_path gem update $(basename $app_path) $@
       fi
     }
 

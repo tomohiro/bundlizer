@@ -17,8 +17,13 @@ set -e
 
         shift
 
-        local abs_path=$BUNDLES/$app
-        RUBYOPT="-I$abs_path/lib -r$abs_path/bundle/bundler/setup" $abs_path/bin/$command $@
+        local app_path=$BUNDLES/$app
+        if [ -f $app_path/Gemfile ]; then
+          RUBYOPT="-I$app_path/lib -r$app_path/bundle/bundler/setup" $app_path/bin/$command $@
+        fi
+        if [ -d $app_path/specifications ]; then
+          GEM_PATH=$app_path:$(gem environment gempath) GEM_HOME= PATH=$app_path/bin:$PATH $command $@
+        fi
       else
         echo "Option Format error. See 'bundlizer help'"
         return 1

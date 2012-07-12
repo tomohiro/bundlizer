@@ -37,6 +37,8 @@ set -e
         rm -rf $app_path
 
         echo "It was Uninstalled '$app'"
+      else
+        echo "$app is not installed"
       fi
     }
 

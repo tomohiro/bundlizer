@@ -17,8 +17,17 @@ set -e
       [ ! -d $BUNDLES ] && return
 
       for app in $(ls $BUNDLES); do
-        echo " * $app ($(cd $BUNDLES/$app; git remote show origin -n | grep "Fetch URL" | cut -d' ' -f5))"
-        echo "     apps: $(ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g')"
+        if [ -d $BUNDLES/$app/.git ]; then
+          echo " * $app ($(cd $BUNDLES/$app; git remote show origin -n | grep "Fetch URL" | cut -d' ' -f5))"
+        fi
+
+        if [ -d $BUNDLES/$app/specifications ]; then
+          echo " * $app (rubygems.org: http://rubygems.org/gems/$app)"
+        fi
+
+        if [ -d $BUNDLES/$app/bin ]; then
+          echo "     apps: $(ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g')"
+        fi
       done
     }
 

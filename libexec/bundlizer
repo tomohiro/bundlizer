@@ -15,12 +15,12 @@ set -e
 
     check_dependencies() {
       if ! type gem > /dev/null; then
-        echo 'RubyGems not installed.'
+        echo 'RubyGems is not installed.'
         return 1
       fi
 
       if ! type bundle > /dev/null; then
-        echo 'Bundler not installed.'
+        echo 'Bundler is not installed. Run `gem install bundler`'
         return 1
       fi
     }
@@ -39,12 +39,13 @@ set -e
       echo "Usage: $bin_name COMMAND [<args>]"
       echo
       echo 'Bundler apps commands:'
-      echo '  install   user/repository  # git clone git://github.com/user/repository, and bundle install'
-      echo '  update    [app]            # named app git pull and bundle update(or update all)'
-      echo '  uninstall app              # uninstall the app'
-      echo '  list                       # display installed bundler apps'
-      echo '  run       app/command      # named app/command bundle exec (e.g. bundlizer run heroku/heroku)'
-      echo '  path      app              # display installed bundler app path'
+      echo '  install   app              # gem install from RubyGems.org'
+      echo '            user/repository  # git clone git://github.com/user/repository, and bundle install'
+      echo '  update    [app]            # named app gem update / git pull and bundle update(or update all)'
+      echo '  uninstall app              # uninstall a app'
+      echo '  list                       # display installed apps'
+      echo '  run       app/command      # named app/command exec (e.g. bundlizer run heroku/heroku)'
+      echo '  path      app              # display installed app path'
       echo
       echo 'Bundlizer commands:'
       echo '  upgrade                    # upgrade the Bundlizer'

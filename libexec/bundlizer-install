@@ -21,10 +21,15 @@ set -e
           cd $BUNDLES
           git clone $url
           bundle_install_at $BUNDLES/$app
-          install_bundle_exec_wrappers $BUNDLES/$app
+          install_bundlizer_run_wrappers $BUNDLES/$app
         else
-          echo "Option Format error. See 'bundlizer help'"
-          return 1
+          local app=$1
+          cd $BUNDLES
+          echo "Searching in RubyGems..."
+          gem specification $app -r 1>/dev/null && {
+            gem install $app -i $BUNDLES/$app
+            install_bundlizer_run_wrappers $BUNDLES/$app
+          }
         fi
       }
     }
@@ -51,14 +56,14 @@ set -e
     }
 
 
-# Install bundle exec warppers to bundlizer exec bin
+# Install `bundlizer run` warppers to bundlizer apps directory
 
-    install_bundle_exec_wrappers() {
+    install_bundlizer_run_wrappers() {
       check_apps_dir_exists && {
         local app_path=$1
         for bin in $(get_app_bin_files $app_path); do
           bin_path=$APPS/$bin
-          create_bundle_exec_wrapper $app_path $bin > $bin_path
+          create_bundlizer_run_wrapper $app_path $bin > $bin_path
           chmod +x $bin_path
           echo "It was installed '$bin' into $bin_path"
         done
@@ -82,9 +87,9 @@ set -e
     }
 
 
-# Create a `bundle exec` wrapper script
+# Create a `bundlizer run` wrapper script
 
-    create_bundle_exec_wrapper() {
+    create_bundlizer_run_wrapper() {
       local app=$(basename $1)
       local bin=$2
       cat << EOF

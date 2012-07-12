@@ -45,9 +45,7 @@ Usage
 
 ### Install apps from RubyGems.org
 
-1. Install
-
-Install Ruby on Rails
+Install (e.g. Ruby on Rails)
 
     $ bundlizer install rails
     Searching in RubyGems...

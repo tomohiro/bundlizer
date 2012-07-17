@@ -27,7 +27,7 @@ set -e
           cd $BUNDLES
           echo "Searching in RubyGems..."
           gem specification $app -r 1>/dev/null && {
-            gem install $app -i $BUNDLES/$app
+            gem install -E $app -i $BUNDLES/$app
             install_bundlizer_run_wrappers $BUNDLES/$app
           }
         fi

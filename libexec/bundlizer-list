@@ -8,10 +8,10 @@ set -e
     readonly BUNDLES=$(cd $(dirname $0)/.. && pwd)$PREFIX/bundles
 
 
-# Display installed bundler apps
+# Display installed bundlizer apps
 
     list() {
-      echo "Bundler apps installed by the Bundlizer:"
+      echo "Gem/Bundler apps installed by the Bundlizer:"
       echo
 
       [ ! -d $BUNDLES ] && return

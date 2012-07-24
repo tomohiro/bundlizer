@@ -24,10 +24,11 @@ set -e
           install_bundlizer_run_wrappers $BUNDLES/$app
         else
           local app=$1
+          shift
           cd $BUNDLES
           echo "Searching in RubyGems..."
           gem specification $app -r 1>/dev/null && {
-            gem install -E $app -i $BUNDLES/$app
+            gem install -E $app -i $BUNDLES/$app $@
             install_bundlizer_run_wrappers $BUNDLES/$app
           }
         fi

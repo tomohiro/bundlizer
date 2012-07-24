@@ -8,7 +8,7 @@ set -e
     readonly BUNDLES="$(cd $(dirname $0)/.. && pwd)/bundles"
 
 
-# Display bundle app path
+# Display bundlizer app path
 
     path() {
       local target=$1

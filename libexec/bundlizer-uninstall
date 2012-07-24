@@ -10,7 +10,7 @@ set -e
     readonly APPS=$PREFIX/apps
 
 
-# Uninstall Bundler apps
+# Uninstall Bundlizer app
 
     uninstall() {
       local app=$1
@@ -24,7 +24,10 @@ set -e
         /bin/echo -n "uninstall: remove app '$app'? (yes/no) "
         read input
 
-        [ ! $input = 'yes' ] && return 1
+        [ ! $input = 'yes' ] && {
+          echo 'OK. Nothing to do.'
+          return 1
+        }
 
         local app_path=$BUNDLES/$app
 
@@ -43,7 +46,7 @@ set -e
     }
 
 
-# Return Bundler apps executable file list
+# Return Bundlizer apps executable file list
 
     get_app_bin_files() {
       local bindir=$1/bin

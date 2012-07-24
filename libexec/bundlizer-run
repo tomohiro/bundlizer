@@ -8,7 +8,7 @@ set -e
     readonly BUNDLES=$(cd $(dirname $0)/.. && pwd)$PREFIX/bundles
 
 
-# Run installed bundler apps
+# Run installed bundlizer apps
 
     run() {
       if echo $1 | egrep '^.+/.+$' >/dev/null; then

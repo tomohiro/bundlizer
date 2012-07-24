@@ -29,7 +29,7 @@ set -e
     }
 
 
-# Update under the vendor directory
+# Update under the bundlizer apps directory
 
     update_at() {
       local app_path=$1

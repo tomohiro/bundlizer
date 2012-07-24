@@ -30,19 +30,20 @@ set -e
 
     usage() {
       echo '
-        ____                  _____
-       / __ )__  ______  ____/ / (_)___  ___  _____
-      / __  / / / / __ \/ __  / / /_  / / _ \/ ___/
-     / /_/ / /_/ / / / / /_/ / / / / /_/  __/ /
-    /_____/\__,_/_/ /_/\__,_/_/_/ /___/\___/_/'
+         ____                  _____
+        / __ )__  ______  ____/ / (_)___  ___  _____
+       / __  / / / / __ \/ __  / / /_  / / _ \/ ___/
+      / /_/ / /_/ / / / / /_/ / / / / /_/  __/ /
+     /_____/\__,_/_/ /_/\__,_/_/_/ /___/\___/_/'
       echo
       echo "Usage: $bin_name COMMAND [<args>]"
       echo
-      echo 'Bundler apps commands:'
+      echo 'Gem/Bundler apps commands:'
       echo '  install   app              # gem install from RubyGems.org'
       echo '            user/repository  # git clone git://github.com/user/repository, and bundle install'
       echo '  update    [app]            # named app gem update / git pull and bundle update(or update all)'
       echo '  uninstall app              # uninstall a app'
+      echo '  outdated                   # display outdated apps'
       echo '  list                       # display installed apps'
       echo '  run       app/command      # named app/command exec (e.g. bundlizer run heroku/heroku)'
       echo '  path      app              # display installed app path'

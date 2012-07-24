@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Bundlizer by Tomohiro</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Bundlizer</h1>
+        <p class="header">RubyGems and Bundler apps manager</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/Tomohiro/bundlizer/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/Tomohiro/bundlizer/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/Tomohiro/bundlizer">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/Tomohiro">Tomohiro</a></p>
+
+
+      </header>
+      <section>
+        <h1>Bundlizer</h1>
+
+<p>The Bundlizer is RubyGems and Bundler apps management tool from the command line. <em>DO NOT USE sudo</em></p>
+
+<p><img src="http://f.cl.ly/items/281V1j3N221N2B433p2X/bundlizer.png" alt="bundlizer banner"></p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>OSX or Ubuntu</li>
+<li>Git</li>
+<li>Ruby 1.9.3+</li>
+<li>RubyGems 1.8+</li>
+<li>Bundler 1.1+</li>
+</ul><h2>Getting Started</h2>
+
+<h3>Installation</h3>
+
+<p>To install the Bundlizer, open a terminal and run this command</p>
+
+<pre><code>$ curl -L git.io/bundlizer-install | sh
+</code></pre>
+
+<p>Source <code>~/.bundlizer/etc/bashrc</code> in your <code>~/.bash_profile</code> or <code>~/.zshenv</code></p>
+
+<pre><code>$ echo 'source $HOME/.bundlizer/etc/bashrc' &gt;&gt; ~/.bash_profile
+</code></pre>
+
+<p>Restart your shell or <code>exec $SHELL</code></p>
+
+<h3>Upgrade the Bundlizer</h3>
+
+<pre><code>$ bundlizer upgrade
+</code></pre>
+
+<h3>Uninstall the Bundlizer</h3>
+
+<pre><code>$ rm -rf ~/.bundlizer
+</code></pre>
+
+<h2>Usage</h2>
+
+<h3>Install apps from RubyGems.org</h3>
+
+<p>Install (e.g. Ruby on Rails)</p>
+
+<pre><code>$ bundlizer install rails
+Searching in RubyGems...
+Fetching: i18n-0.6.0.gem (100%)
+Fetching: multi_json-1.3.6.gem (100%)
+Fetching: activesupport-3.2.6.gem (100%)
+Fetching: builder-3.0.0.gem (100%)
+Fetching: activemodel-3.2.6.gem (100%)
+Fetching: rack-1.4.1.gem (100%)
+Fetching: rails-3.2.6.gem (100%)
+..snip..
+Successfully installed builder-3.0.0
+Successfully installed activemodel-3.2.6
+Successfully installed rack-1.4.1
+Successfully installed rails-3.2.6
+26 gems installed
+It was installed 'erubis' into /home/tomohiro/.bundlizer/apps/erubis
+It was installed 'rackup' into /home/tomohiro/.bundlizer/apps/rackup
+It was installed 'rails' into /home/tomohiro/.bundlizer/apps/rails
+It was installed 'rake2thor' into /home/tomohiro/.bundlizer/apps/rake2thor
+It was installed 'thor' into /home/tomohiro/.bundlizer/apps/thor
+It was installed 'tilt' into /home/tomohiro/.bundlizer/apps/tilt
+It was installed 'tt' into /home/tomohiro/.bundlizer/apps/tt
+</code></pre>
+
+<p>You can start a rails project as usual</p>
+
+<pre><code>$ rails -v
+Rails 3.2.6
+$ rails new awesome-project
+$ cd awesome-project
+$ bundle install --path gems
+$ rails s
+=&gt; Booting WEBrick
+=&gt; Rails 3.2.6 application starting in development on http://0.0.0.0:3000
+=&gt; Call with -d to detach
+=&gt; Ctrl-C to shutdown server
+[2012-07-12 19:54:49] INFO  WEBrick 1.3.1
+[2012-07-12 19:54:49] INFO  ruby 1.9.3 (2012-04-20) [i686-linux]
+[2012-07-12 19:54:49] INFO  WEBrick::HTTPServer#start: pid=1479 port=3000
+</code></pre>
+
+<h3>Install apps from GitHub repository</h3>
+
+<p>Install (e.g. <code>git://github.com/heroku/heroku.git</code>)</p>
+
+<pre><code>$ bundlizer install heroku/heroku
+Cloning into heroku...
+remote: Counting objects: 9595, done.
+remote: Compressing objects: 100% (3304/3304), done.
+remote: Total 9595 (delta 6435), reused 9094 (delta 5994)
+Receiving objects: 100% (9595/9595), 1.18 MiB | 316 KiB/s, done.
+Resolving deltas: 100% (6435/6435), done.
+
+Start bundle installing to /home/tomohiro/.bundlizer/bundles/heroku
+Fetching gem metadata from http://rubygems.org/.........
+Installing rake (0.9.2)
+..snip..
+Using heroku (2.18.1) from source at .
+..snip..
+Installing webmock (1.7.7)
+Using bundler (1.1.rc.7)
+Your bundle is complete! It was installed into ./vendor/bundle
+It was installed `heroku` into /home/tomohiro/.bundlizer/apps/heroku
+</code></pre>
+
+<p>You don't need <code>bundle</code> command. You can use <code>foo</code> instead of <code>bundle exec foo</code></p>
+
+<pre><code>$ type heroku
+heroku is /home/tomohiro/.bundlizer/apps/heroku
+$ heroku version
+heroku-gem/2.19.0
+</code></pre>
+
+<h3>Show installed apps</h3>
+
+<pre><code>$ bundlizer list
+Bundler apps installed by the Bundlizer:
+ * foreman (rubygems.org: http://rubygems.org/gems/foreman)
+      apps: foreman,rake2thor,thor
+ * guard (git://github.com/guard/guard.git)
+     apps: guard
+ * heroku (git://github.com/heroku/heroku.git)
+     apps: heroku
+ * pry (git://github.com/pry/pry.git)
+     apps: pry
+ * rails (rubygems.org: http://rubygems.org/gems/rails)
+      apps: erubis,rackup,rails,rake2thor,thor,tilt,tt
+ * yard (git://github.com/lsegal/yard.git)
+     apps: yard,yardoc,yri
+</code></pre>
+
+<h3>Update apps</h3>
+
+<p>Update the named app</p>
+
+<pre><code>$ bundlizer update heroku
+</code></pre>
+
+<p>Update all apps</p>
+
+<pre><code>$ bundlizer update
+</code></pre>
+
+<h3>Uninstall</h3>
+
+<pre><code>$ bundlizer uninstall heroku
+uninstall: remove app 'heroku'? (yes/no) yes
+rm -f /home/tomohiro/.bundlizer/apps/heroku
+rm -rf /home/tomohiro/.bundlizer/bundles/heroku
+It was Uninstalled 'heroku'
+</code></pre>
+
+<hr><h2>LICENSE</h2>
+
+<p>© 2012 Tomohiro, TAIRA.
+This project is licensed under the MIT license.
+See LICENSE for details.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-13275958-4");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>

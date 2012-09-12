@@ -14,7 +14,7 @@
         }
       done
 
-      echo 'Yeah. All test passed.'
+      echo 'Congrats! test passed.'
     }
 
 

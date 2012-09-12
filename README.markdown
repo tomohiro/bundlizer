@@ -2,7 +2,7 @@ Bundlizer
 ================================================================================
 The Bundlizer is RubyGems and Bundler apps management tool from the command line. _DO NOT USE sudo_
 
-[![Still Maintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
+![Still Maintained](https://dl.dropbox.com/u/173097/github/stillmaintained.png)
 [![Build Status](https://secure.travis-ci.org/Tomohiro/bundlizer.png)](https://secure.travis-ci.org/Tomohiro/bundlizer)
 
 ![bundlizer banner](http://f.cl.ly/items/281V1j3N221N2B433p2X/bundlizer.png)

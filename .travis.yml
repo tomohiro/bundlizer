@@ -1,1 +1,6 @@
+language: sh
+before_script:
+  - ./install.sh
+  - echo 'source "$HOME/.bundlizer/etc/bashrc"' >> ~/.bash_profile
+  - hash -r
 script: ./test.sh

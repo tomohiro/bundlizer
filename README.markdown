@@ -48,9 +48,9 @@ Restart your shell or `exec $SHELL`
 Usage
 --------------------------------------------------------------------------------
 
-### Install apps from RubyGems.org
+### Install Gem apps from RubyGems.org
 
-Install (e.g. Ruby on Rails)
+Install (e.g. Ruby on Rails: https://rubygems.org/gems/rails)
 
     $ bundlizer install rails
     Searching in RubyGems...
@@ -94,9 +94,9 @@ You can start a rails project as usual
     [2012-07-12 19:54:49] INFO  WEBrick::HTTPServer#start: pid=1479 port=3000
 
 
-### Install apps from GitHub repository
+### Install Bundler apps from GitHub repository
 
-Install (e.g. `git://github.com/heroku/heroku.git`)
+Install (e.g. heroku: `git://github.com/heroku/heroku.git`)
 
     $ bundlizer install heroku/heroku
     Cloning into heroku...
@@ -117,7 +117,7 @@ Install (e.g. `git://github.com/heroku/heroku.git`)
     Your bundle is complete! It was installed into ./vendor/bundle
     It was installed `heroku` into /home/tomohiro/.bundlizer/apps/heroku
 
-You don't need `bundle` command. You can use `foo` instead of `bundle exec foo`
+You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cmd>`
 
     $ type heroku
     heroku is /home/tomohiro/.bundlizer/apps/heroku
@@ -129,7 +129,8 @@ You don't need `bundle` command. You can use `foo` instead of `bundle exec foo`
 ### Show installed apps
 
     $ bundlizer list
-    Bundler apps installed by the Bundlizer:
+    Gem/Bundler apps installed by the Bundlizer:
+
      * foreman (rubygems.org: http://rubygems.org/gems/foreman)
           apps: foreman,rake2thor,thor
      * guard (git://github.com/guard/guard.git)

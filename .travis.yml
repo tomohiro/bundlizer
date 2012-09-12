@@ -1,11 +1,4 @@
 language: sh
-before_script:
-  - env
-  - ls -la $HOME/
-install: ./install.sh
 env: PATH="$HOME/.bundlizer/bin:$HOME/.bundlizer/apps:$HOME"
+before_scripts: ./install.sh
 script: ./test.sh
-after_script:
-  - ls -la $HOME/
-  - rm -rf $HOME/.bundlizer
-  - env

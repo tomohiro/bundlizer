@@ -2,7 +2,6 @@
 
 # Define constants
 
-    readonly HOME=/tmp
     readonly PREFIX=$(cd $(dirname $0) && pwd)
     readonly TESTS=$PREFIX/test
 
@@ -14,31 +13,13 @@
 # Define test functions
 
     success() {
-        echo "[success]" $1
+      echo "[success]" $1
     }
 
     failure() {
-        echo "[failure]" $1
-        FAILED=$(echo "$FAILED+1" | bc)
-        return 1
-    }
-
-# Test runner
-
-    run_all_tests() {
-      for test in $(ls $TESTS); do
-        sh $TESTS/$test
-        assert_true $test $?
-      done
-
-      cleanup
-
-      if [ $FAILED = 0 ]; then
-        success 'Done. All test passed.'
-      else
-        failure "Oops, test failed. (errors: $FAILED)"
-        exit 1
-      fi
+      echo "[failure]" $1
+      FAILED=$(($FAILED+1))
+      return 1
     }
 
     assert_true() {
@@ -51,13 +32,22 @@
       fi
     }
 
-    cleanup() {
-      [ -d $HOME/.bundlizer ] && {
-        rm -rf $HOME/.bundlizer
-        [ $? ] && success 'cleanup'
-      }
-    }
 
+# Test runner
+
+    run_all_tests() {
+      for test in $(ls $TESTS); do
+        sh $TESTS/$test
+        assert_true $test $?
+      done
+
+      if [ $FAILED = 0 ]; then
+        success 'Yeah. All test passed.'
+      else
+        failure "Oops, test failed. (errors: $FAILED)"
+        exit 1
+      fi
+    }
 
 
 run_all_tests

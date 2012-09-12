@@ -1,6 +1,5 @@
 language: sh
-before_script:
-  - ./install.sh
-  - echo 'source "$HOME/.bundlizer/etc/bashrc"' >> ~/.bash_profile
-  - hash -r
+install: ./install.sh
+env: PATH="$HOME/.bundlizer/bin:$HOME/.bundlizer/apps:$HOME"
 script: ./test.sh
+after_script: rm -rf $HOME/.bundlizer

@@ -13,7 +13,6 @@
 
     failure() {
       echo "[failure]" $@
-      FAILED=$(($FAILED+1))
       exit 1
     }
 

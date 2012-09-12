@@ -1,4 +1,4 @@
 language: sh
 env: PATH="$HOME/.bundlizer/bin:$HOME/.bundlizer/apps:$PATH"
-before_scripts: ./install.sh
+before_script: ./install.sh
 script: ./test.sh

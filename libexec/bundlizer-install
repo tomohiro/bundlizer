@@ -96,7 +96,7 @@ set -e
       cat << EOF
 #!/bin/sh
 
-bundlizer run $app/$bin \$@
+bundlizer run $app/$bin "\$@"
 EOF
     }
 

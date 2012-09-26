@@ -69,7 +69,7 @@ set -e
           ;;
         *)
           if [ -f "$COMMANDS/bundlizer-$command" ]; then
-            exec "$COMMANDS/bundlizer-$command" $@
+            exec "$COMMANDS/bundlizer-$command" "$@"
           else
             echo "$bin_name: Could not find command '$command'."
             echo "See '$bin_name help' for more information on a specific command"
@@ -86,4 +86,4 @@ set -e
   exit $?
 }
 
-bundlizer $@
+bundlizer "$@"

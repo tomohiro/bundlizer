@@ -44,6 +44,7 @@ set -e
       if [ -d $app_path/specifications ]; then
         echo "Start gem update to $app_path"
         GEM_PATH= GEM_HOME=$app_path gem update $(basename $app_path) $@
+        GEM_PATH= GEM_HOME=$app_path gem cleanup
       fi
     }
 

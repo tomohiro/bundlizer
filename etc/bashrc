@@ -1,2 +1,6 @@
-abs_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+if [ $SHELL = bash ]; then
+  abs_path=$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)
+else
+  abs_path=$(cd $(dirname $0)/.. && pwd)
+fi
 export PATH=$abs_path/bin:$abs_path/apps:$PATH

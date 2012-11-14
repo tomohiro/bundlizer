@@ -127,7 +127,7 @@ You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cm
 
 ### Show installed apps
 
-    $ bundlizer list
+    $ bundlizer list --verbose
     Gem/Bundler apps installed by the Bundlizer:
 
      * foreman (rubygems.org: http://rubygems.org/gems/foreman)
@@ -163,6 +163,20 @@ Update all apps
     rm -rf /home/tomohiro/.bundlizer/bundles/heroku
     It was Uninstalled 'heroku'
 
+
+
+Tips
+--------------------------------------------------------------------------------
+
+### Backup and Restore app list
+
+Backup installed app list
+
+    $ bundlizer list | tail -n +3 > ~/bundlizer_installed_apps
+
+Reinstall app from backup installed app list
+
+    $ cat ~/bundlizer_installed_apps | xargs bundlizer install
 
 
 ---

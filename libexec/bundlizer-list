@@ -11,12 +11,24 @@ set -e
 # Display installed bundlizer apps
 
     list() {
+      local verbose=''
+      case $1 in
+        '-v' | '--verbose')
+          verbose=1
+          ;;
+      esac
+
       echo "Gem/Bundler apps installed by the Bundlizer:"
       echo
 
       [ ! -d $BUNDLES ] && return
 
       for app in $(ls $BUNDLES); do
+        [ ! $verbose ] && {
+          echo $app
+          continue
+        }
+
         if [ -d $BUNDLES/$app/.git ]; then
           echo " * $app ($(cd $BUNDLES/$app; git remote show origin -n | grep "Fetch URL" | cut -d' ' -f5))"
         fi

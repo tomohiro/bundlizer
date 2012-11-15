@@ -1,4 +1,4 @@
-if [ $SHELL = bash ]; then
+if [[ $SHELL =~ bash ]]; then
   abs_path=$(cd $(dirname ${BASH_SOURCE[0]})/.. && pwd)
 else
   abs_path=$(cd $(dirname $0)/.. && pwd)

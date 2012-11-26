@@ -34,9 +34,7 @@
 
 <p>The Bundlizer is RubyGems and Bundler apps management tool from the command line. <em>DO NOT USE sudo</em></p>
 
-<p><img src="http://f.cl.ly/items/281V1j3N221N2B433p2X/bundlizer.png" alt="bundlizer banner"></p>
-
-<h2>Requirements</h2>
+<hr><h2>Requirements</h2>
 
 <ul>
 <li>OSX or Ubuntu</li>
@@ -72,9 +70,9 @@
 
 <h2>Usage</h2>
 
-<h3>Install apps from RubyGems.org</h3>
+<h3>Install Gem apps from RubyGems.org</h3>
 
-<p>Install (e.g. Ruby on Rails)</p>
+<p>Install (e.g. Ruby on Rails: <a href="https://rubygems.org/gems/rails">https://rubygems.org/gems/rails</a>)</p>
 
 <pre><code>$ bundlizer install rails
 Searching in RubyGems...
@@ -117,9 +115,9 @@ $ rails s
 [2012-07-12 19:54:49] INFO  WEBrick::HTTPServer#start: pid=1479 port=3000
 </code></pre>
 
-<h3>Install apps from GitHub repository</h3>
+<h3>Install Bundler apps from GitHub repository</h3>
 
-<p>Install (e.g. <code>git://github.com/heroku/heroku.git</code>)</p>
+<p>Install (e.g. heroku: <code>git://github.com/heroku/heroku.git</code>)</p>
 
 <pre><code>$ bundlizer install heroku/heroku
 Cloning into heroku...
@@ -141,7 +139,7 @@ Your bundle is complete! It was installed into ./vendor/bundle
 It was installed `heroku` into /home/tomohiro/.bundlizer/apps/heroku
 </code></pre>
 
-<p>You don't need <code>bundle</code> command. You can use <code>foo</code> instead of <code>bundle exec foo</code></p>
+<p>You don't need <code>bundle</code> command. You can use <code>&lt;cmd&gt;</code> instead of <code>bundle exec &lt;cmd&gt;</code></p>
 
 <pre><code>$ type heroku
 heroku is /home/tomohiro/.bundlizer/apps/heroku
@@ -151,8 +149,9 @@ heroku-gem/2.19.0
 
 <h3>Show installed apps</h3>
 
-<pre><code>$ bundlizer list
-Bundler apps installed by the Bundlizer:
+<pre><code>$ bundlizer list --verbose
+Gem/Bundler apps installed by the Bundlizer:
+
  * foreman (rubygems.org: http://rubygems.org/gems/foreman)
       apps: foreman,rake2thor,thor
  * guard (git://github.com/guard/guard.git)
@@ -188,6 +187,20 @@ rm -rf /home/tomohiro/.bundlizer/bundles/heroku
 It was Uninstalled 'heroku'
 </code></pre>
 
+<h2>Tips</h2>
+
+<h3>Backup and Restore app list</h3>
+
+<p>Backup installed app list</p>
+
+<pre><code>$ bundlizer list | tail -n +3 &gt; ~/bundlizer_installed_apps
+</code></pre>
+
+<p>Reinstall app from backup installed app list</p>
+
+<pre><code>$ cat ~/bundlizer_installed_apps | xargs bundlizer install
+</code></pre>
+
 <hr><h2>LICENSE</h2>
 
 <p>© 2012 Tomohiro, TAIRA.
@@ -198,7 +211,7 @@ See LICENSE for details.</p>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 		          <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

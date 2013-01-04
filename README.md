@@ -1,6 +1,7 @@
 Bundlizer
 ================================================================================
-The Bundlizer is RubyGems and Bundler apps management tool from the command line. _DO NOT USE sudo_
+
+The Bundlizer is RubyGems and Bundler apps management tool from the command line. _DO NOT NEED sudo_
 
 [![Build Status](https://secure.travis-ci.org/Tomohiro/bundlizer.png)](https://secure.travis-ci.org/Tomohiro/bundlizer)
 
@@ -13,9 +14,7 @@ Requirements
 
 - OSX or Ubuntu
 - Git
-- Ruby 1.9.3+
-- RubyGems 1.8+
-- Bundler 1.1+
+- Bundler 1.1 or later
 
 
 Getting Started
@@ -184,6 +183,6 @@ Reinstall app from backup installed app list
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2012 Tomohiro, TAIRA.
+&copy; 2013 Tomohiro, TAIRA.
 This project is licensed under the MIT license.
 See LICENSE for details.

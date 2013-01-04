@@ -43,16 +43,17 @@ set -e
       echo '            <user/repository> # git clone git://github.com/user/repository, and bundle install'
       echo '  update    [app]             # named app gem update / git pull and bundle update(or update all)'
       echo '  uninstall <app>             # uninstall the app'
-      echo '  list      [-v|--verbose]    # display installed apps ("-v or --verbose" is add extra information)'
+      echo '  list      [-v|--verbose]    # show the installed apps ("-v or --verbose" is add extra information)'
       echo '  run       <app/command>     # named app/command exec (e.g. bundlizer run heroku/heroku)'
-      echo '  path      <app>             # display installed app path'
-      echo '  use       <version> <app>   # Set the local application-specific Ruby version (e.g. bundlizer use 1.9.3-p362 <gem-name>)'
-      echo '            --unset   <app>   # Unset the local Ruby version (e.g. bundlizer use --unset <gem-name>)'
+      echo '  path      <app>             # show the installed app path'
+      echo '  depends   <app>             # show the dependencies of an installed app'
+      echo '  use       <version> <app>   # set the local application-specific Ruby version (e.g. bundlizer use 1.9.3-p362 <gem-name>)'
+      echo '            --unset   <app>   # unset the local Ruby version (e.g. bundlizer use --unset <gem-name>)'
       echo
       echo 'Bundlizer commands:'
       echo '  upgrade                     # upgrade the Bundlizer'
-      echo '  help, --help                # display usage'
-      echo '  version                     # display version'
+      echo '  help, --help                # show usage'
+      echo '  version                     # show version'
     }
 
 

@@ -37,8 +37,14 @@ set -e
           echo " * $app (rubygems.org: http://rubygems.org/gems/$app)"
         fi
 
+        # Show executable files
         if [ -d $BUNDLES/$app/bin ]; then
           echo "     apps: $(ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g')"
+        fi
+
+        # Show the local application-specific Ruby version
+        if [ -f $BUNDLES/$app/.ruby-version ]; then
+          echo "     ruby: $(cat $BUNDLES/$app/.ruby-version)"
         fi
       done
     }

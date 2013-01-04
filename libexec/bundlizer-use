@@ -1,0 +1,41 @@
+#!/bin/sh
+
+set -e
+
+
+# Define constants
+
+    readonly BUNDLES="$(cd $(dirname $0)/.. && pwd)/bundles"
+
+
+# Sets a local application-specific Ruby version by `rbenv local` command in the apps directory.
+# https://github.com/sstephenson/rbenv#rbenv-local
+
+    use() {
+      if ! type rbenv > /dev/null; then
+        echo 'rbenv is not installed.'
+        return 1
+      fi
+
+      local version=$1
+      local app=$2
+
+      if [ ! -d $BUNDLES/$app ]; then
+        echo "bundlizer: no such app '$app'"
+        return 1
+      fi
+
+      cd $BUNDLES/$app
+
+      rbenv local "$version"
+
+      if [ $version = --unset ]; then
+        echo "Unset local Ruby version at $app"
+      else
+        echo "Use $(cat $BUNDLES/$app/.ruby-version) at $app"
+      fi
+    }
+
+
+
+use $@

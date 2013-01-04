@@ -5,9 +5,30 @@ The Bundlizer is RubyGems and Bundler apps management tool from the command line
 
 [![Build Status](https://secure.travis-ci.org/Tomohiro/bundlizer.png)](https://secure.travis-ci.org/Tomohiro/bundlizer)
 
-![bundlizer banner](http://f.cl.ly/items/281V1j3N221N2B433p2X/bundlizer.png)
+
+Table of Contents
+--------------------------------------------------------------------------------
+
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+    - [Installation](#installation)
+    - [Upgrade the Bundlizer](#upgrade-the-bundlizer)
+    - [Uninstall the Bundlizer](#uninstall-the-bundlizer)
+- [Basic Usage](#basic-usage)
+    - [Install Gem apps from RubyGems.org](#install-gem-apps-from-rubygemsorg)
+    - [Install Bundler apps from GitHub Repository](#install-bundler-apps-from-github-repository)
+    - [Set the local application-specific Ruby version](#set-the-local-application-specific-ruby-version)
+    - [Show the installed apps](#show-the-installed-apps)
+    - [Show the dependencies of an installed app](#show-the-dependencies-of-an-installed-app)
+    - [Update apps](#update-apps)
+    - [Uninstall](#uninstall)
+- [Tips](#tips)
+    - [Backup and Restore app list](#backup-and-restore-app-list)
+- [LICENSE](#license)
+
 
 ---
+
 
 Requirements
 --------------------------------------------------------------------------------
@@ -43,7 +64,7 @@ Restart your shell or `exec $SHELL`
     $ rm -rf ~/.bundlizer
 
 
-Usage
+Basic Usage
 --------------------------------------------------------------------------------
 
 ### Install Gem apps from RubyGems.org
@@ -145,7 +166,7 @@ Unset
     Unset local Ruby version at rails
 
 
-### Show installed apps
+### Show the installed apps
 
     $ bundlizer list --verbose
     Gem/Bundler apps installed by the Bundlizer:
@@ -164,6 +185,11 @@ Unset
           apps: erubis,rackup,rails,rake2thor,thor,tilt,tt
      * yard (git://github.com/lsegal/yard.git)
          apps: yard,yardoc,yri
+
+
+### Show the dependencies of an installed app
+
+    $ bundlizer depends rails
 
 
 ### Update apps

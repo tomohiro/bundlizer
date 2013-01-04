@@ -123,6 +123,27 @@ You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cm
     heroku-gem/2.19.0
 
 
+### Set the local application-specific Ruby version
+
+Use the `rbenv local` command by [rbenv](https://github.com/sstephenson/rbenv).
+
+Set 2.0.0-preview1
+
+    $ bundlizer use 2.0.0-preview1 heroku
+    Use 2.0.0-preview1 at heroku
+
+
+Set 1.9.3-p362
+
+    $ bundlizer use 1.9.3-p362 rails
+    Use 1.9.3-p362 at rails
+
+
+Unset
+
+    $ bundlizer use --unset rails
+    Unset local Ruby version at rails
+
 
 ### Show installed apps
 
@@ -135,8 +156,10 @@ You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cm
          apps: guard
      * heroku (git://github.com/heroku/heroku.git)
          apps: heroku
+         ruby: 2.0.0-preview1
      * pry (git://github.com/pry/pry.git)
          apps: pry
+         ruby: 1.9.3-p362
      * rails (rubygems.org: http://rubygems.org/gems/rails)
           apps: erubis,rackup,rails,rake2thor,thor,tilt,tt
      * yard (git://github.com/lsegal/yard.git)

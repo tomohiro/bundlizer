@@ -18,9 +18,14 @@ set -e
         shift
 
         local app_path=$BUNDLES/$app
+
+        # Switch context for `bundlizer use` command
+        cd $app_path
+
         if [ -f $app_path/Gemfile ]; then
           RUBYOPT="-I$app_path/lib -r$app_path/bundle/bundler/setup" $app_path/bin/$command "$@"
         fi
+
         if [ -d $app_path/specifications ]; then
           GEM_PATH=$app_path:$(gem environment gempath) GEM_HOME= PATH=$app_path/bin:$PATH $command "$@"
         fi

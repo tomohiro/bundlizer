@@ -39,18 +39,20 @@ set -e
       echo "Usage: $bin_name COMMAND [<args>]"
       echo
       echo 'Gem/Bundler apps commands:'
-      echo '  install   app              # gem install from RubyGems.org'
-      echo '            user/repository  # git clone git://github.com/user/repository, and bundle install'
-      echo '  update    [app]            # named app gem update / git pull and bundle update(or update all)'
-      echo '  uninstall app              # uninstall a app'
-      echo '  list      [-v|--verbose]   # display installed apps ("-v or --verbose" is add extra information)'
-      echo '  run       app/command      # named app/command exec (e.g. bundlizer run heroku/heroku)'
-      echo '  path      app              # display installed app path'
+      echo '  install   <app>             # gem install from RubyGems.org'
+      echo '            <user/repository> # git clone git://github.com/user/repository, and bundle install'
+      echo '  update    [app]             # named app gem update / git pull and bundle update(or update all)'
+      echo '  uninstall <app>             # uninstall the app'
+      echo '  list      [-v|--verbose]    # display installed apps ("-v or --verbose" is add extra information)'
+      echo '  run       <app/command>     # named app/command exec (e.g. bundlizer run heroku/heroku)'
+      echo '  path      <app>             # display installed app path'
+      echo '  use       <version> <app>   # Set the local application-specific Ruby version (e.g. bundlizer use 1.9.3-p362 <gem-name>)'
+      echo '            --unset   <app>   # Unset the local Ruby version (e.g. bundlizer use --unset <gem-name>)'
       echo
       echo 'Bundlizer commands:'
-      echo '  upgrade                    # upgrade the Bundlizer'
-      echo '  help, --help               # display usage'
-      echo '  version                    # display version'
+      echo '  upgrade                     # upgrade the Bundlizer'
+      echo '  help, --help                # display usage'
+      echo '  version                     # display version'
     }
 
 

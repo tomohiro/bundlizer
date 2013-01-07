@@ -20,7 +20,10 @@ set -e
         local app_path=$BUNDLES/$app
 
         # Switch context for `bundlizer use` command
-        cd $app_path
+        #   [sstephenson/rbenv - GitHub #rbenv shell](https://github.com/sstephenson/rbenv#rbenv-shell)
+        if [ -f $app_path/.ruby-version ]; then
+          export RBENV_VERSION=$(cat $app_path/.ruby-version)
+        fi
 
         if [ -f $app_path/Gemfile ]; then
           RUBYOPT="-I$app_path/lib -r$app_path/bundle/bundler/setup" $app_path/bin/$command "$@"

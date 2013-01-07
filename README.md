@@ -195,6 +195,8 @@ Unset
 
 ### Add dependent gem to the app
 
+Example: add `net-ssh` gem to `backup` app.
+
     $ bundlizer depends backup --add-gem net-ssh
 
 

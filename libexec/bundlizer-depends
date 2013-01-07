@@ -12,23 +12,49 @@ set -e
 
     depends() {
       local app=$1
+      shift
+
       if [ ! -d $BUNDLES/$app ]; then
         echo "bundlizer: no such app '$app'"
         return 1
       fi
 
-      show_dependencies_at $BUNDLES/$app
+      case "$@" in
+      --add-gem*)
+        shift
+        add_dependent_gem_to "$@" $BUNDLES/$app
+        ;;
+      *)
+        show_dependencies_at $BUNDLES/$app
+        ;;
+      esac
     }
 
+# Add dependent gem to the specific app
+
+    add_dependent_gem_to() {
+      local gem_and_option=$1
+      local app_path=$2
+
+      if [ -f $app_path/Gemfile ]; then
+        echo "Sorry, $(basename $app_path) is Bundler format project."
+        echo '--add-gem option has enabled at RubyGems only.'
+        return 1
+      fi
+
+      gem install -i $app_path -E $gem_and_option
+    }
 
 # Show dependencies under the bundlizer apps directory
 
     show_dependencies_at() {
       local app_path=$1
+
       if [ -f $app_path/Gemfile ]; then
         cd $app_path
         bundle show
       fi
+
       if [ -d $app_path/specifications ]; then
         GEM_PATH= GEM_HOME=$app_path gem list
       fi
@@ -36,4 +62,4 @@ set -e
 
 
 
-depends $@
+depends "$@"

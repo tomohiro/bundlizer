@@ -20,6 +20,7 @@ Table of Contents
     - [Set the local application-specific Ruby version](#set-the-local-application-specific-ruby-version)
     - [Show the installed apps](#show-the-installed-apps)
     - [Show the dependencies of an installed app](#show-the-dependencies-of-an-installed-app)
+    - [Add dependent gem to the app](#add-dependent-gem-to-the-app)
     - [Update apps](#update-apps)
     - [Uninstall](#uninstall)
 - [Tips](#tips)
@@ -190,6 +191,11 @@ Unset
 ### Show the dependencies of an installed app
 
     $ bundlizer depends rails
+
+
+### Add dependent gem to the app
+
+    $ bundlizer depends backup --add-gem net-ssh
 
 
 ### Update apps

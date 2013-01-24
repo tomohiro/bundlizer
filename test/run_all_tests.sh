@@ -6,8 +6,8 @@
 # Test runner
 
     run_all_tests() {
-      for test in $(ls test); do
-        sh test/$test
+      for test in $(ls test/*_test.sh); do
+        sh $test
         [ $? != 0 ] && {
           echo "Oops, test failed."
           exit 1

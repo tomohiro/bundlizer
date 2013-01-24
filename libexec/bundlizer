@@ -8,8 +8,6 @@ set -e
     readonly PREFIX=$(cd $(dirname $0)/.. && pwd)
     readonly COMMANDS=$PREFIX/libexec
 
-    readonly bin_name=$(basename $0)
-
 
 # Check dependencies
 
@@ -29,6 +27,7 @@ set -e
 # Display the Bundlizer help
 
     usage() {
+      echo "bundlizer $($COMMANDS/bundlizer-version)"
       echo '
          ____                  _____
         / __ )__  ______  ____/ / (_)___  ___  _____
@@ -36,9 +35,10 @@ set -e
       / /_/ / /_/ / / / / /_/ / / / / /_/  __/ /
      /_____/\__,_/_/ /_/\__,_/_/_/ /___/\___/_/'
       echo
-      echo "Usage: $bin_name COMMAND [<args>]"
+      echo "Usage: bundlizer COMMAND [<args>]"
       echo
       echo 'Gem/Bundler apps commands:'
+      echo '  commands                    # List all available bundlizer commands '
       echo '  install   <app>             # gem install from RubyGems.org'
       echo '            <user/repository> # git clone git://github.com/user/repository, and bundle install'
       echo '  update    [app]             # the app gem update / git pull and bundle update(or update all)'
@@ -75,8 +75,8 @@ set -e
           if [ -f "$COMMANDS/bundlizer-$command" ]; then
             exec "$COMMANDS/bundlizer-$command" "$@"
           else
-            echo "$bin_name: Could not find command '$command'."
-            echo "See '$bin_name help' for more information on a specific command"
+            echo "bundlizer: Could not find command '$command'."
+            echo "See 'bundlizer help' for more information on a specific command"
             return 1
           fi
           ;;

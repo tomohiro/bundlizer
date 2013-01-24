@@ -26,6 +26,7 @@ Table of Contents
     - [Update apps](#update-apps)
     - [Uninstall](#uninstall)
 - [Tips](#tips)
+    - [Install autocompletion](#install-autocompletion)
     - [Backup and Restore app list](#backup-and-restore-app-list)
 - [LICENSE](#license)
 
@@ -225,6 +226,13 @@ Update all apps
 
 Tips
 --------------------------------------------------------------------------------
+
+### Install autocompletion
+
+Sourcing `~/.bundlizer/completions/bundlizer.zsh` will set up that, for Zsh users.
+
+    $ echo 'source "$HOME/.bundlizer/completions/bundlizer.zsh"' >> ~/.zshenv
+
 
 ### Backup and Restore app list
 

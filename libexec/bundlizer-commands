@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+
+# Define constants
+
+    readonly COMMANDS="$(cd $(dirname $0)/.. && pwd)/libexec"
+
+
+# Show the bundlizer command list
+
+    commands() {
+      for command in $(ls $COMMANDS/bundlizer-*); do
+        echo $command | cut -d '-' -f 2
+      done
+    }
+
+
+
+commands "$@"

@@ -10,7 +10,7 @@ set -e
 
 # Display bundlizer app path
 
-    path() {
+    which() {
       local target=$1
       local app_path="$BUNDLES/$target"
       if [ -d $app_path ]; then
@@ -24,4 +24,4 @@ set -e
 
 
 
-path $@
+which $@

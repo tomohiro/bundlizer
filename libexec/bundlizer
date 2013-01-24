@@ -38,14 +38,14 @@ set -e
       echo "Usage: bundlizer COMMAND [<args>]"
       echo
       echo 'Gem/Bundler apps commands:'
-      echo '  commands                    # List all available bundlizer commands '
+      echo '  commands                    # list all available bundlizer commands '
       echo '  install   <app>             # gem install from RubyGems.org'
       echo '            <user/repository> # git clone git://github.com/user/repository, and bundle install'
-      echo '  update    [app]             # the app gem update / git pull and bundle update(or update all)'
+      echo '  update    [app]             # the app gem update / git pull and bundle install(or update all)'
       echo '  uninstall <app>             # uninstall the app'
       echo '  list      [-v|--verbose]    # show the installed apps ("-v or --verbose" is add extra information)'
       echo '  run       <app/command>     # the app/command exec (e.g. bundlizer run heroku/heroku)'
-      echo '  path      <app>             # show the app path'
+      echo '  which     <app>             # show the app full path'
       echo '  depends   <app>             # show the dependencies of an installed app'
       echo '            <app> --add-gem   # add dependent gem to the app (e.g. bundlizer depends <app-name> --add-gem <gem-name>)'
       echo '  use       <version> <app>   # set the local application-specific Ruby version (e.g. bundlizer use 1.9.3-p362 <gem-name>)'

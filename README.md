@@ -196,16 +196,24 @@ Unset
     $ bundlizer depends rails
 
 
-### Add dependent gem to the app
+### Add dependent gem to an app
 
-Example: add `net-ssh` gem to `backup` app.
+Example: add `veewee` gem to the `vagrant` app.
 
-    $ bundlizer depends backup --add-gem net-ssh
+    $ bundlizer install vagrant
+    $ bundlizer depends vagrant --add-gem veewee
+
+
+Example: add `net-ssh`, `net-scp` gem to the `backup` app.
+
+    $ bundlizer install backup
+    $ bundlizer depends backup --add-gem net-ssh -v '~> 2.3.0'
+    $ bundlizer depends backup --add-gem net-scp -v '~> 1.4.0'
 
 
 ### Update apps
 
-Update the named app
+Update the app
 
     $ bundlizer update heroku
 

@@ -22,7 +22,7 @@ set -e
       case "$@" in
       --add-gem*)
         shift
-        add_dependent_gem_to "$@" $BUNDLES/$app
+        add_dependent_gem_to $BUNDLES/$app "$@"
         ;;
       *)
         show_dependencies_at $BUNDLES/$app
@@ -33,8 +33,8 @@ set -e
 # Add dependent gem to the specific app
 
     add_dependent_gem_to() {
-      local gem_and_option=$1
-      local app_path=$2
+      local app_path=$1
+      shift
 
       if [ -f $app_path/Gemfile ]; then
         echo "Sorry, $(basename $app_path) is Bundler format project."
@@ -42,7 +42,7 @@ set -e
         return 1
       fi
 
-      gem install -i $app_path -E $gem_and_option
+      gem install -i $app_path -E "$@"
     }
 
 # Show dependencies under the bundlizer apps directory

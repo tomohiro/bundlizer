@@ -27,6 +27,6 @@
     }
 
     test_do() {
-      $1 > /dev/null 2>&1
+      eval "$1" > /dev/null 2>&1
       assert_true "$1"
     }

@@ -208,7 +208,7 @@ Example: add `net-ssh`, `net-scp` gem to the `backup` app.
 
     $ bundlizer install backup
     $ bundlizer depends backup --add-gem net-ssh -v '~> 2.3.0'
-    $ bundlizer depends backup --add-gem net-scp -v '~> 1.4.0'
+    $ bundlizer depends backup --add-gem net-scp -v '~> 1.0.4'
 
 
 ### Update apps

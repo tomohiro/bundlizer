@@ -1,11 +1,10 @@
-Bundlizer
+Bundlizer [![Stillmaintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
 ================================================================================
 
 The Bundlizer is RubyGems and Bundler apps management tool from the command line. _DO NOT NEED sudo_
 
 [![Dependency Status](https://gemnasium.com/Tomohiro/bundlizer.png)](https://gemnasium.com/Tomohiro/bundlizer)
 [![Build Status](https://travis-ci.org/Tomohiro/bundlizer.png?branch=master)](https://travis-ci.org/Tomohiro/bundlizer)
-[![Stillmaintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
 
 
 Table of Contents
@@ -152,16 +151,16 @@ You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cm
 
 Use the `rbenv local` command by [rbenv](https://github.com/sstephenson/rbenv).
 
-Set 2.0.0-preview1
+Set 2.0.0-p0
 
-    $ bundlizer use 2.0.0-preview1 heroku
-    Use 2.0.0-preview1 at heroku
+    $ bundlizer use 2.0.0-p0 heroku
+    Use 2.0.0-p0 at heroku
 
 
-Set 1.9.3-p362
+Set 1.9.3-p392
 
-    $ bundlizer use 1.9.3-p362 rails
-    Use 1.9.3-p362 at rails
+    $ bundlizer use 1.9.3-p392 rails
+    Use 1.9.3-p392 at rails
 
 
 Unset
@@ -176,7 +175,7 @@ Unset
     Gem/Bundler apps installed by the Bundlizer:
 
      * foreman (rubygems.org: http://rubygems.org/gems/foreman)
-          apps: foreman,rake2thor,thor
+         apps: foreman,rake2thor,thor
      * guard (git://github.com/guard/guard.git)
          apps: guard
      * heroku (git://github.com/heroku/heroku.git)
@@ -186,7 +185,7 @@ Unset
          apps: pry
          ruby: 1.9.3-p362
      * rails (rubygems.org: http://rubygems.org/gems/rails)
-          apps: erubis,rackup,rails,rake2thor,thor,tilt,tt
+         apps: erubis,rackup,rails,rake2thor,thor,tilt,tt
      * yard (git://github.com/lsegal/yard.git)
          apps: yard,yardoc,yri
 

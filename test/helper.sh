@@ -27,6 +27,6 @@
     }
 
     test_do() {
-      eval "$1" > /dev/null 2>&1
+      eval "./bin/$1" > /dev/null 2>&1
       assert_true "$1"
     }

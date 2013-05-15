@@ -19,6 +19,12 @@ set -e
           local app=$(echo $1 | cut -d '/' -f2)
           local url="git://github.com/$user/$app.git"
           cd $BUNDLES
+          bundle_install_at $BUNDLES/$app
+          install_bundlizer_run_wrappers $BUNDLES/$app
+        else if echo $1 | egrep '^git@.+:.+/.+$' > /dev/null; then
+          local url= $1
+          local app=$(echo $1 | cut -d '/' -f2 | sed -e s/.git$//)
+          cd $BUNDLES
           git clone $url
           bundle_install_at $BUNDLES/$app
           install_bundlizer_run_wrappers $BUNDLES/$app

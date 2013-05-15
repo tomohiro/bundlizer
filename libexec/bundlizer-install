@@ -14,7 +14,14 @@ set -e
 
     install() {
       check_bundles_dir_exists && {
-        if echo $1 | egrep '^.+/.+$' >/dev/null; then
+        if echo $1 | egrep '^https?://.+$' > /dev/null; then
+          local url=$1
+          local app=$(echo $1 | cut -d '/' -f5 | sed -e s/.git$//)
+          cd $BUNDLES
+          git clone $url
+          bundle_install_at $BUNDLES/$app
+          install_bundlizer_run_wrappers $BUNDLES/$app
+        elif echo $1 | egrep '^.+/.+$' >/dev/null; then
           local user=$(echo $1 | cut -d '/' -f1)
           local app=$(echo $1 | cut -d '/' -f2)
           local url="git://github.com/$user/$app.git"

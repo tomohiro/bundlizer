@@ -2,6 +2,17 @@
 
 . "$(pwd)/test/helper.sh"
 
+# Cleanup
+
+    cleanup() {
+      [ -d apps ] && {
+        rm -rf apps
+      }
+
+      [ -d bundles ] && {
+        rm -rf bundles
+      }
+    }
 
 # Test runner
 
@@ -10,10 +21,12 @@
         sh $test
         [ $? != 0 ] && {
           echo "Oops, test failed."
+          cleanup
           exit 1
         }
       done
 
+      cleanup
       echo 'Congrats! test passed.'
     }
 

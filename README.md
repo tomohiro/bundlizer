@@ -1,7 +1,7 @@
 Bundlizer [![Stillmaintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
 ================================================================================
 
-The Bundlizer is RubyGems and Bundler apps management tool from the command line. _DO NOT NEED sudo_
+The Bundlizer is RubyGems and Bundler apps management tool from the command line. _NO MORE sudo_
 
 [![Dependency Status](https://gemnasium.com/Tomohiro/bundlizer.png)](https://gemnasium.com/Tomohiro/bundlizer)
 [![Build Status](https://travis-ci.org/Tomohiro/bundlizer.png?branch=master)](https://travis-ci.org/Tomohiro/bundlizer)
@@ -46,11 +46,11 @@ Getting Started
 
 ### Installation
 
-To install the Bundlizer, open a terminal and run this command
+To install the Bundlizer, open a terminal and run this command:
 
     $ curl -L git.io/bundlizer-install | sh
 
-Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`
+Source `~/.bundlizer/etc/bashrc` in your `~/.bash_profile` or `~/.zshenv`:
 
     $ echo 'source $HOME/.bundlizer/etc/bashrc' >> ~/.bash_profile
 
@@ -72,7 +72,7 @@ Basic Usage
 
 ### Install Gem apps from RubyGems.org
 
-Install (e.g. Ruby on Rails: https://rubygems.org/gems/rails)
+Install (e.g. Ruby on Rails: https://rubygems.org/gems/rails):
 
     $ bundlizer install rails
     Searching in RubyGems...
@@ -99,7 +99,7 @@ Install (e.g. Ruby on Rails: https://rubygems.org/gems/rails)
 
 
 
-You can start a rails project as usual
+You can start a rails project as usual:
 
     $ rails -v
     Rails 3.2.6
@@ -118,7 +118,7 @@ You can start a rails project as usual
 
 ### Install Bundler apps from GitHub repository
 
-Install (e.g. heroku: `git://github.com/heroku/heroku.git`)
+Install (e.g. heroku: `git://github.com/heroku/heroku.git`):
 
     $ bundlizer install heroku/heroku
     Cloning into heroku...
@@ -139,7 +139,7 @@ Install (e.g. heroku: `git://github.com/heroku/heroku.git`)
     Your bundle is complete! It was installed into ./vendor/bundle
     It was installed `heroku` into /home/tomohiro/.bundlizer/apps/heroku
 
-You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cmd>`
+You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cmd>`:
 
     $ type heroku
     heroku is /home/tomohiro/.bundlizer/apps/heroku
@@ -147,23 +147,28 @@ You don't need `bundle` command. You can use `<cmd>` instead of `bundle exec <cm
     heroku-gem/2.19.0
 
 
+Or, You can run the following command if you want use `https://github.com/...` or `https://bitbucket.org/...`:
+
+    $ bundlizer install https://bitbucket.org/foo/bar.git
+
+
 ### Set the local application-specific Ruby version
 
 Use the `rbenv local` command by [rbenv](https://github.com/sstephenson/rbenv).
 
-Set 2.0.0-p0
+Set 2.0.0-p0:
 
     $ bundlizer use 2.0.0-p0 heroku
     Use 2.0.0-p0 at heroku
 
 
-Set 1.9.3-p392
+Set 1.9.3-p392:
 
     $ bundlizer use 1.9.3-p392 rails
     Use 1.9.3-p392 at rails
 
 
-Unset
+Unset:
 
     $ bundlizer use --unset rails
     Unset local Ruby version at rails
@@ -197,13 +202,13 @@ Unset
 
 ### Add dependent gem to an app
 
-Example: add `veewee` gem to the `vagrant` app.
+Example: add `veewee` gem to the `vagrant` app:
 
     $ bundlizer install vagrant
     $ bundlizer depends vagrant --add-gem veewee
 
 
-Example: add `net-ssh`, `net-scp` gem to the `backup` app.
+Example: add `net-ssh`, `net-scp` gem to the `backup` app:
 
     $ bundlizer install backup
     $ bundlizer depends backup --add-gem net-ssh -v '~> 2.3.0'
@@ -212,11 +217,11 @@ Example: add `net-ssh`, `net-scp` gem to the `backup` app.
 
 ### Update apps
 
-Update the app
+Update the app:
 
     $ bundlizer update heroku
 
-Update all apps
+Update all apps:
 
     $ bundlizer update
 
@@ -236,18 +241,18 @@ Tips
 
 ### Install autocompletion
 
-Sourcing `~/.bundlizer/completions/bundlizer.zsh` will set up that, for Zsh users.
+Sourcing `~/.bundlizer/completions/bundlizer.zsh` will set up that, for Zsh users:
 
     $ echo 'source "$HOME/.bundlizer/completions/bundlizer.zsh"' >> ~/.zshenv
 
 
 ### Backup and Restore app list
 
-Backup installed app list
+Backup installed app list:
 
     $ bundlizer list | tail -n +3 > ~/bundlizer_installed_apps
 
-Reinstall app from backup installed app list
+Reinstall app from backup installed app list:
 
     $ cat ~/bundlizer_installed_apps | xargs bundlizer install
 

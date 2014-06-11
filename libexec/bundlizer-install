@@ -16,7 +16,7 @@ set -e
       check_bundles_dir_exists && {
         if echo $1 | egrep '^https?://.+$' > /dev/null; then
           local url=$1
-          local app=$(echo $1 | cut -d '/' -f5 | sed -e s/.git$//)
+          local app=$(echo $1 | awk -F '/' '{ print $NF }' | sed -e s/.git$//)
           cd $BUNDLES
           git clone $url
           bundle_install_at $BUNDLES/$app

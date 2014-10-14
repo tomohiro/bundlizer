@@ -87,11 +87,21 @@ set -e
     }
 
 
-# Return Bundler apps executable file list
+# Returns Bundler/Gem apps executable file list
 
     get_app_bin_files() {
-      local bindir=$1/bin
-      [ -d $bindir ] && ls $bindir
+      local app_path=$1
+
+      # Bundler
+      if [ -f $app_path/Gemfile ]; then
+        [ -d $app_path/bin ] && ls $app_path/bin
+      fi
+
+      # Gem
+      if [ -d $app_path/specifications ]; then
+        local app=$(echo $app_path | rev | cut -d '/' -f 1 | rev)
+        GEM_PATH=$app_path:$(gem environment gempath) GEM_HOME= gem specification $app executables | tail -n +2 | tr -d - | tr -d '\n'
+      fi
     }
 
 

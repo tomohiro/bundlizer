@@ -72,48 +72,36 @@ Basic Usage
 
 ### Install Gem apps from RubyGems.org
 
-Install (e.g. Ruby on Rails: https://rubygems.org/gems/rails):
+Install Rails (e.g. Ruby on Rails command: https://rubygems.org/gems/railties):
 
-    $ bundlizer install rails
+    $ bundlizer install railties
     Searching in RubyGems...
-    Fetching: i18n-0.6.0.gem (100%)
-    Fetching: multi_json-1.3.6.gem (100%)
-    Fetching: activesupport-3.2.6.gem (100%)
-    Fetching: builder-3.0.0.gem (100%)
-    Fetching: activemodel-3.2.6.gem (100%)
-    Fetching: rack-1.4.1.gem (100%)
-    Fetching: rails-3.2.6.gem (100%)
+    Fetching: thread_safe-0.3.4.gem (100%)
+    Successfully installed thread_safe-0.3.4
+    Fetching: minitest-5.4.2.gem (100%)
+    Successfully installed minitest-5.4.2
     ..snip..
-    Successfully installed builder-3.0.0
-    Successfully installed activemodel-3.2.6
-    Successfully installed rack-1.4.1
-    Successfully installed rails-3.2.6
-    26 gems installed
-    It was installed 'erubis' into /home/tomohiro/.bundlizer/apps/erubis
-    It was installed 'rackup' into /home/tomohiro/.bundlizer/apps/rackup
-    It was installed 'rails' into /home/tomohiro/.bundlizer/apps/rails
-    It was installed 'rake2thor' into /home/tomohiro/.bundlizer/apps/rake2thor
-    It was installed 'thor' into /home/tomohiro/.bundlizer/apps/thor
-    It was installed 'tilt' into /home/tomohiro/.bundlizer/apps/tilt
-    It was installed 'tt' into /home/tomohiro/.bundlizer/apps/tt
-
-
+    Fetching: railties-4.1.6.gem (100%)
+    Successfully installed railties-4.1.6
+    15 gems installed
+    It was installed 'rails' into /Users/tomohiro/.bundlizer/apps/rails
 
 You can start a rails project as usual:
 
     $ rails -v
-    Rails 3.2.6
-    $ rails new awesome-project
+    Rails 4.1.6
+    $ rails new awesome-project --skip-bundle
     $ cd awesome-project
-    $ bundle install --path gems
+    $ bundle install --path vendor/bundle
     $ rails s
     => Booting WEBrick
-    => Rails 3.2.6 application starting in development on http://0.0.0.0:3000
-    => Call with -d to detach
+    => Rails 4.1.6 application starting in development on http://0.0.0.0:3000
+    => Run `rails server -h` for more startup options
+    => Notice: server is listening on all interfaces (0.0.0.0). Consider using 127.0.0.1 (--binding option)
     => Ctrl-C to shutdown server
-    [2012-07-12 19:54:49] INFO  WEBrick 1.3.1
-    [2012-07-12 19:54:49] INFO  ruby 1.9.3 (2012-04-20) [i686-linux]
-    [2012-07-12 19:54:49] INFO  WEBrick::HTTPServer#start: pid=1479 port=3000
+    [2014-10-14 21:03:22] INFO  WEBrick 1.3.1
+    [2014-10-14 21:03:22] INFO  ruby 2.1.3 (2014-09-19) [x86_64-darwin13.0]
+    [2014-10-14 21:03:22] INFO  WEBrick::HTTPServer#start: pid=43184 port=3000
 
 
 ### Install Bundler apps from GitHub repository
@@ -262,6 +250,6 @@ Reinstall app from backup installed app list:
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2012 - 2013 Tomohiro TAIRA.
+&copy; 2012 - 2014 Tomohiro TAIRA.
 This project is licensed under the MIT license.
 See LICENSE for details.

@@ -117,7 +117,7 @@ Install (e.g. heroku: `git://github.com/heroku/heroku.git`):
     Resolving deltas: 100% (6435/6435), done.
 
     Start bundle installing to /home/tomohiro/.bundlizer/bundles/heroku
-    Fetching gem metadata from http://rubygems.org/.........
+    Fetching gem metadata from https://rubygems.org/.........
     Installing rake (0.9.2)
     ..snip..
     Using heroku (2.18.1) from source at .
@@ -142,7 +142,7 @@ Or, You can run the following command if you want use `https://github.com/...` o
 
 ### Set the local application-specific Ruby version
 
-Use the `rbenv local` command by [rbenv](https://github.com/sstephenson/rbenv).
+Use the `rbenv local` command by [rbenv](https://github.com/rbenv/rbenv).
 
 Set 2.0.0-p0:
 
@@ -167,7 +167,7 @@ Unset:
     $ bundlizer list --verbose
     Gem/Bundler apps installed by the Bundlizer:
 
-     * foreman (rubygems.org: http://rubygems.org/gems/foreman)
+     * foreman (rubygems.org: https://rubygems.org/gems/foreman)
          apps: foreman,rake2thor,thor
      * guard (git://github.com/guard/guard.git)
          apps: guard
@@ -177,7 +177,7 @@ Unset:
      * pry (git://github.com/pry/pry.git)
          apps: pry
          ruby: 1.9.3-p362
-     * rails (rubygems.org: http://rubygems.org/gems/rails)
+     * rails (rubygems.org: https://rubygems.org/gems/rails)
          apps: erubis,rackup,rails,rake2thor,thor,tilt,tt
      * yard (git://github.com/lsegal/yard.git)
          apps: yard,yardoc,yri

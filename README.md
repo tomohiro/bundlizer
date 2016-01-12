@@ -1,4 +1,4 @@
-Bundlizer [![Stillmaintained](http://stillmaintained.com/Tomohiro/bundlizer.png)](http://stillmaintained.com/Tomohiro/bundlizer)
+Bundlizer
 ================================================================================
 
 The Bundlizer is RubyGems and Bundler apps management tool from the command line. _NO MORE sudo_
@@ -245,11 +245,9 @@ Reinstall app from backup installed app list:
     $ cat ~/bundlizer_installed_apps | xargs bundlizer install
 
 
----
-
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2012 - 2014 Tomohiro TAIRA.
-This project is licensed under the MIT license.
-See LICENSE for details.
+&copy; 2012 - 2016 Tomohiro TAIRA.
+
+This project is licensed under the MIT license. See [LICENSE](LICENSE) for details.

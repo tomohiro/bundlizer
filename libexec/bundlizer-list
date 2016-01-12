@@ -38,7 +38,13 @@ set -e
         fi
 
         # Show executable files
-        if [ -d $BUNDLES/$app/bin ]; then
+        if [ -f $BUNDLES/$app/Gemfile ]; then
+          if [ -d $BUNDLES/$app/exe ]; then
+            echo "     apps: $(ls $BUNDLES/$app/exe | tr '\012' ',' | sed 's/,$//g')"
+          elif [ -d $BUNDLE/$app/bin ]; then
+            echo "     apps: $(ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g')"
+          fi
+        elif [ -d $BUNDLES/$app/bin ]; then
           echo "     apps: $(ls $BUNDLES/$app/bin | tr '\012' ',' | sed 's/,$//g')"
         fi
 

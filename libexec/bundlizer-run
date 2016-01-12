@@ -18,19 +18,21 @@ set -e
         shift
 
         local app_path=$BUNDLES/$app
+        local bindir=$(resolve_bindir $app_path)
+        local rbenv_version=''
 
         # Switch context for `bundlizer use` command
         #   [sstephenson/rbenv - GitHub #rbenv shell](https://github.com/sstephenson/rbenv#rbenv-shell)
         if [ -f $app_path/.ruby-version ]; then
-          export RBENV_VERSION=$(cat $app_path/.ruby-version)
+          $rbenv_version=$(cat $app_path/.ruby-version)
         fi
 
         if [ -f $app_path/Gemfile ]; then
-          RUBYOPT="-I$app_path/lib -r$app_path/bundle/bundler/setup" $app_path/bin/$command "$@"
+          RBENV_VERSION=$rbenv_version RUBYOPT="-I$app_path/lib -r$app_path/bundle/bundler/setup" $app_path/$bindir/$command "$@"
         fi
 
         if [ -d $app_path/specifications ]; then
-          GEM_PATH=$app_path:$(gem environment gempath) GEM_HOME= PATH=$app_path/bin:$PATH $command "$@"
+          GEM_PATH=$app_path:$(gem environment gempath) GEM_HOME= PATH=$app_path/$bindir:$PATH $command "$@"
         fi
       else
         echo "Option Format error. See 'bundlizer help'"
@@ -38,6 +40,24 @@ set -e
       fi
     }
 
+
+# Resolves Bundler/Gem directory of executable commands
+
+    resolve_bindir() {
+      local app_path=$1
+      local bindir='bin'
+
+      # Bundler
+      if [ -f $app_path/Gemfile ]; then
+        if [ -d $app_path/exe ]; then
+          bindir='exe'
+        elif [ -d $app_path/exe ]; then
+          bindir='bin'
+        fi
+      fi
+
+      echo $bindir
+    }
 
 
 run "$@"

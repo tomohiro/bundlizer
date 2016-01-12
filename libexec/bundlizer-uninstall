@@ -53,7 +53,11 @@ set -e
 
       # Bundler
       if [ -f $app_path/Gemfile ]; then
-        [ -d $app_path/bin ] && ls $app_path/bin
+        if [ -d $app_path/exe ]; then
+          ls $app_path/exe
+        elif [ -d $app_path/bin ]; then
+          ls $app_path/bin
+        fi
       fi
 
       # Gem

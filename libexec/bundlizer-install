@@ -54,12 +54,19 @@ set -e
 # Bundle install under the vendor directory
 
     bundle_install_at() {
-      local gem_path=$1
-      if [ -f $gem_path/Gemfile ]; then
-        cd $gem_path
+      local app_path=$1
+      local rbenv_version=''
+      if [ -f $app_path/Gemfile ]; then
+        cd $app_path
         echo
-        echo "Start bundle installing to $gem_path"
-        bundle install --standalone --without development:test
+
+        echo "Start bundle installing to $app_path"
+
+        if [ -f $app_path/.ruby-version ]; then
+          rbenv_version=$(cat $app_path/.ruby-version)
+        fi
+
+        RBENV_VERSION=$rbenv_version bundle install --standalone --without development:test
       fi
     }
 
@@ -94,7 +101,11 @@ set -e
 
       # Bundler
       if [ -f $app_path/Gemfile ]; then
-        [ -d $app_path/bin ] && ls $app_path/bin
+        if [ -d $app_path/exe ]; then
+          ls $app_path/exe
+        elif [ -d $app_path/bin ]; then
+          ls $app_path/bin
+        fi
       fi
 
       # Gem

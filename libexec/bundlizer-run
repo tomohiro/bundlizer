@@ -21,8 +21,6 @@ set -e
         local bindir=$(resolve_bindir $app_path)
         local rbenv_version=''
 
-        # Switch context for `bundlizer use` command
-        #   [sstephenson/rbenv - GitHub #rbenv shell](https://github.com/sstephenson/rbenv#rbenv-shell)
         if [ -f $app_path/.ruby-version ]; then
           $rbenv_version=$(cat $app_path/.ruby-version)
         fi
@@ -51,7 +49,7 @@ set -e
       if [ -f $app_path/Gemfile ]; then
         if [ -d $app_path/exe ]; then
           bindir='exe'
-        elif [ -d $app_path/exe ]; then
+        elif [ -d $app_path/bin ]; then
           bindir='bin'
         fi
       fi
